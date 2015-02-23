@@ -58,3 +58,6 @@ group :development, :test do
   gem "pry-byebug"
 end
 
+gem 'rails_12factor', group: :production
+gem 'puma',           group: :production
+
