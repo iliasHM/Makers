@@ -31,6 +31,12 @@ gem 'simple_form'
 #Figaro
 gem "figaro"
 
+#Devise
+gem 'devise'
+
+#Facebook Omniauth
+gem 'omniauth-facebook'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -57,4 +63,7 @@ group :development, :test do
   gem "pry-rails"
   gem "pry-byebug"
 end
+
+gem 'rails_12factor', group: :production
+gem 'puma',           group: :production
 
