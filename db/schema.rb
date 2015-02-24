@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20150224105807) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "machine_materials", force: :cascade do |t|
+    t.integer  "machine_id"
+    t.integer  "material_id"
+    t.string   "colors"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "machine_materials", ["machine_id"], name: "index_machine_materials_on_machine_id", using: :btree
+  add_index "machine_materials", ["material_id"], name: "index_machine_materials_on_material_id", using: :btree
+
   create_table "machine_models", force: :cascade do |t|
     t.string   "name"
     t.integer  "brand_id"
@@ -52,19 +63,8 @@ ActiveRecord::Schema.define(version: 20150224105807) do
   add_index "machines", ["machine_model_id"], name: "index_machines_on_machine_model_id", using: :btree
   add_index "machines", ["user_id"], name: "index_machines_on_user_id", using: :btree
 
-  create_table "machines_materials", force: :cascade do |t|
-    t.integer  "machine_id"
-    t.integer  "material_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "machines_materials", ["machine_id"], name: "index_machines_materials_on_machine_id", using: :btree
-  add_index "machines_materials", ["material_id"], name: "index_machines_materials_on_material_id", using: :btree
-
   create_table "materials", force: :cascade do |t|
     t.string   "name"
-    t.string   "colors"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -93,10 +93,10 @@ ActiveRecord::Schema.define(version: 20150224105807) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "machine_materials", "machines"
+  add_foreign_key "machine_materials", "materials"
   add_foreign_key "machine_models", "brands"
   add_foreign_key "machine_models", "categories"
   add_foreign_key "machines", "machine_models"
   add_foreign_key "machines", "users"
-  add_foreign_key "machines_materials", "machines"
-  add_foreign_key "machines_materials", "materials"
 end

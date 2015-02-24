@@ -1,7 +1,7 @@
 class Material < ActiveRecord::Base
-  has_and_belongs_to_many :machines
+  has_many :machine_materials
+  has_many :machines, through: :machine_materials
 
   validates :name, presence: true
-  validates :colors, presence: true
 
 end

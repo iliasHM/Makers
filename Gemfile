@@ -34,6 +34,9 @@ gem "figaro"
 #Devise
 gem 'devise'
 
+#Faker
+gem 'faker', '~> 1.4.3'
+
 #Facebook Omniauth
 gem 'omniauth-facebook'
 
