@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :accounts do
+  get 'machines/new'
+  end
+
+  namespace :accounts do
+  get 'machines/edit'
+  end
+
+  namespace :accounts do
+  get 'machines/index'
+  end
+
   root to: "pages#home"
 
   #Omniauth callback
