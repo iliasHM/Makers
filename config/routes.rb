@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+
+  resources :machines, only: [:index, :search, :show]
+
   root to: "pages#home"
 
   #Omniauth callback
