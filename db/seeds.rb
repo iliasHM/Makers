@@ -67,7 +67,7 @@ materials = 2.times.map do
 end
 
 Machine.destroy_all
-machines = 2.times.map do
+machines = 6.times.map do
   machine = Machine.new({
     length: Faker::Number.number(2),
     width: Faker::Number.number(2),

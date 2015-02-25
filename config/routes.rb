@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+
+  resources :machines, only: [:index, :search, :show]
+
   namespace :accounts do
   get 'machines/new'
   end
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
   namespace :accounts do
   get 'machines/index'
   end
+
 
   root to: "pages#home"
 

@@ -5,7 +5,7 @@ class Machine < ActiveRecord::Base
   has_one    :category, through: :machine_model
   has_one    :brand, through: :machine_model
 
-  has_many   :machine_materials
+  has_many   :machine_materials, dependent: :destroy
   has_many   :materials, through: :machine_materials
 
   validates  :machine_model_id, presence: true
