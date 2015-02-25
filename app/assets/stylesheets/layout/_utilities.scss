@@ -7,6 +7,26 @@
   padding-top: 8em;
   padding-bottom: 8em;
 }
+.padded-left {
+  padding-left: 2.5em;
+}
+.padded-right {
+  padding-right: 2.5em;
+}
+.padded-small {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.margin-space {
+  margin: 2em;
+}
+.card {
+  width: 370px;
+  border-radius: 5px;
+}
+.btn {
+  margin: 0px 10px;
+}
 .bg-red {
   background: $red;
   color: white;
@@ -31,3 +51,9 @@
   background: $purple;
   color: white;
 }
+.bg-white {
+  background: white;
+  color: $gray-darker;
+  padding: 0.5em;
+}
+
