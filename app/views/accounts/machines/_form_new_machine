@@ -2,15 +2,21 @@
 
   <%= f.error_notification %>
 
-  <%= f.input :category, :label => "Select machine category", collection: @categories, prompt: "Categories" %>
+  <%#= f.input :category, :label => "Select machine category", collection: @categories, prompt: "Categories" %>
 
-  <%= f.input :brand, collection: @brands, required: true, autofocus: true %>
+  <%#= f.input :brand, collection: @brands, required: true, autofocus: true %>
 
-  <%= f.input :machine_model, collection: @models, required: true %>
+
+
+
+  <%= f.association :machine_model, required: true  %>
 
   <%= f.input :description, :label => "Describe your machine" %>
 
-
+  <%= f.fields_for :machine_materials do |machine_material_form| %>
+    <%= machine_material_form.association :material %>
+    <%= machine_material_form.input :colors %>
+  <% end %>
 
   <%= f.button :submit, "Add machine", class: "btn btn-success" %>
 <% end %>
@@ -22,3 +28,5 @@
 <% end %>
 
  -->
+
+

@@ -3,19 +3,27 @@ class Accounts::MachinesController < ApplicationController
 
   def new
     @machine = @user.machines.build
-    @brands = Brand.all
-    @categories = Category.all
-    @models = MachineModel.all
+    @machine.machine_materials.build  #génération d'un machine_material vide
+    # @brands = Brand.all
+    # @categories = Category.all
+    # @models = MachineModel.all
+    # @materials = Material.all
   end
 
   def create
-      @machine = @user.machines.build(machines_params_create)
-      # @machine.available = true
-      if @machine.save
-        redirect_to accounts_machines_path(@machine)
-      else
-        render :new
-      end
+    @machine = @user.machines.build(machines_params_create)
+    # description = machines_params_create[:description]
+    # brand = Brand.find(machines_params_create[:brand])
+    # category = Category.find(machines_params_create[:category])
+    # machine_model = MachineModel.find(machines_params_create[:machine_model])
+    # machine_material = MachineMaterial.find(machines_params_create[:machine_material])
+    # @machine = @user.machines.build(brand: brand, category: category, machine_model: machine_model, description: description)
+    if @machine.save
+      redirect_to accounts_machines_path
+    else
+      raise
+      render :new
+    end
   end
 
   def edit
@@ -31,7 +39,7 @@ class Accounts::MachinesController < ApplicationController
   private
 
   def machines_params_create
-    params.require(:machine).permit(:brand, :category, :machine_model, :description)
+    params.require(:machine).permit(:machine_model_id, :description, machine_materials_attributes: [ :material_id, :colors ])
   end
 
   def find_user

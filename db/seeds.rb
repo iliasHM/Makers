@@ -59,10 +59,9 @@ machine_models = 2.times.map do
 end
 
 Material.destroy_all
-materials = 2.times.map do
+materials = 3.times.map do
   material = Material.new({
     name: Faker::Commerce.product_name,
-
   })
   material.save
 

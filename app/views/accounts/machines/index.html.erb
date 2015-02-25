@@ -6,8 +6,8 @@
       <div class="text-center">
         <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
         <p>Category: <%= machine.category.name %></p>
-        <p>Modèle: <%= machine.machine_model.name %></p>
-        <p>Matériel: <%= machine.materials.map(&:name).join(",") %></p>
+        <p>Model: <%= machine.machine_model.name %></p>
+        <p>Material: <%= machine.materials.map(&:name).join(",") %></p>
         <p>Colors: <%= machine.machine_materials.map(&:colors).join(",") %></p>
         <p>Maker: <%= machine.maker.name %></p>
 
