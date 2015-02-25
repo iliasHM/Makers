@@ -1,14 +1,19 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="text-center light-padded">
-      <h2>Liste de vos machines</h2>
-    </div>
-
+<div class="container">
+  <div class="row">
+    <h1>Your machines</h1>
     <% @machines.each do |machine| %>
-      <%= machine.brand %>
-      <%= machine.category %>
-      <%= machine.
-      <br>
-      <br>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="text-center">
+        <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
+        <p>Category: <%= machine.category.name %></p>
+        <p>Modèle: <%= machine.machine_model.name %></p>
+        <p>Matériel: <%= machine.materials.map(&:name).join(",") %></p>
+        <p>Colors: <%= machine.machine_materials.map(&:colors).join(",") %></p>
+        <p>Maker: <%= machine.maker.name %></p>
+
+
+      </div>
+    </div>
     <% end %>
+  </div>
 </div>

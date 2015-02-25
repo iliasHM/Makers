@@ -73,6 +73,8 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    enumerize (0.10.0)
+      activesupport (>= 3.2)
     erubis (2.7.0)
     execjs (2.3.0)
     faker (1.4.3)
@@ -229,6 +231,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise
+  enumerize (~> 0.10.0)
   faker (~> 1.4.3)
   figaro
   font-awesome-sass

@@ -3,24 +3,27 @@ class Accounts::MachinesController < ApplicationController
 
   def new
     @machine = @user.machines.build
+    @brands = Brand.all
+    @categories = Category.all
+    @models = MachineModel.all
   end
 
   def create
       @machine = @user.machines.build(machines_params_create)
-      @machine.available = true
+      # @machine.available = true
       if @machine.save
-        redirect_to profile_machine_path(@machine)
+        redirect_to accounts_machines_path(@machine)
       else
         render :new
       end
-    end
+  end
 
   def edit
     @machine = @user.machines.find(params[:id])
   end
 
   def index
-    @machines = @user.planes
+    @machines = @user.machines
   end
 
 
@@ -28,7 +31,7 @@ class Accounts::MachinesController < ApplicationController
   private
 
   def machines_params_create
-    params.require(:machine).permit(:model_id, :brand_id, :category_id)
+    params.require(:machine).permit(:brand, :category, :machine_model, :description)
   end
 
   def find_user

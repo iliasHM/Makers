@@ -4,15 +4,12 @@ Rails.application.routes.draw do
   resources :machines, only: [:index, :search, :show]
 
   namespace :accounts do
-  get 'machines/new'
-  end
+    resources :machines, only: [:index, :new, :create, :edit, :update]
+    # get 'machines/new'
 
-  namespace :accounts do
-  get 'machines/edit'
-  end
+    # get 'machines/edit'
 
-  namespace :accounts do
-  get 'machines/index'
+    # get 'machines/index'
   end
 
 

@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-category_array = ["découpe laser", "découpe vinyle", "découpe plasma", "traceur de plan"]
+category_array = ["Découpe Laser", "Découpe plasma", "Découpe Vinyle", "Traceur de plan"]
 colors_string = "bleu, blanc, jaune, noir"
 
 User.destroy_all
@@ -34,9 +34,11 @@ brands = 2.times.map do
 end
 
 Category.destroy_all
-categories = 2.times.map do
+
+category_array.each do |category|
+# categories = 2.times.map do
   category = Category.new({
-    name: category_array.sample,
+    name: category,
     })
   category.save!
 
@@ -47,7 +49,8 @@ MachineModel.destroy_all
 machine_models = 2.times.map do
   machine_model = MachineModel.new({
     name: Faker::Commerce.product_name,
-    category: categories.sample,
+    category: Category.all.sample,
+    # category: categories.sample,
     brand: brands.sample,
     })
   machine_model.save!
