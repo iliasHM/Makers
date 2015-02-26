@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 ruby "2.2.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -46,6 +47,10 @@ gem 'omniauth-facebook'
 #Enumerize
 gem 'enumerize', '~> 0.10.0'
 
+#Geocoder & Gmaps4rails
+gem "geocoder", '~> 1.2.7'
+gem "gmaps4rails", '~> 2.1.2'
+gem "rails-assets-underscore", '~> 1.7.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

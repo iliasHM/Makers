@@ -9,14 +9,16 @@
 
 category_array = ["Découpe Laser", "Découpe plasma", "Découpe Vinyle", "Traceur de plan"]
 colors_string = "bleu, blanc, jaune, noir"
+address_array = ["29 rue des Meuniers, Paris", "37 rue de Nantes, Paris"]
 
 User.destroy_all
-users = 2.times.map do
+users = 5.times.map do
   user = User.new({
     name: Faker::Name.name,
     password: "12345678",
     password_confirmation: "12345678",
     email: Faker::Internet.free_email,
+    address: address_array.sample
     })
   user.save!
 
