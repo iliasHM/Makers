@@ -1,0 +1,4 @@
+$('#machine_machine_model_id > option').remove()
+$('#machine_machine_model_id').append(
+  '<%= j options_from_collection_for_select(@models, :id, :name) %>'
+)

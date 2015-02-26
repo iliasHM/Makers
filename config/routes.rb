@@ -4,17 +4,15 @@ Rails.application.routes.draw do
   resources :machines, only: [:index, :search, :show]
 
   namespace :accounts do
-  get 'machines/new'
+    resources :machines, only: [:index, :new, :create, :edit, :update]
+    # get 'machines/new'
+
+    # get 'machines/edit'
+
+    # get 'machines/index'
   end
 
-  namespace :accounts do
-  get 'machines/edit'
-  end
-
-  namespace :accounts do
-  get 'machines/index'
-  end
-
+  post "/get_models", to: "javascript#get_models"
 
   root to: "pages#home"
 

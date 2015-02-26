@@ -10,4 +10,6 @@ class Machine < ActiveRecord::Base
 
   validates  :machine_model_id, presence: true
   validates  :user_id, presence: true
+
+  accepts_nested_attributes_for :machine_materials
 end
