@@ -21,7 +21,6 @@ class Accounts::MachinesController < ApplicationController
     if @machine.save
       redirect_to accounts_machines_path
     else
-      raise
       render :new
     end
   end
