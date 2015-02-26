@@ -5,7 +5,7 @@ class Accounts::MachinesController < ApplicationController
     @machine = @user.machines.build
     @machine.machine_materials.build  #génération d'un machine_material vide
     # @brands = Brand.all
-    # @categories = Category.all
+    @categories = Category.all
     # @models = MachineModel.all
     # @materials = Material.all
   end
@@ -32,7 +32,6 @@ class Accounts::MachinesController < ApplicationController
   def index
     @machines = @user.machines
   end
-
 
 
   private

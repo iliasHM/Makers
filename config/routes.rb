@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     # get 'machines/index'
   end
 
+  post "/get_models", to: "javascript#get_models"
 
   root to: "pages#home"
 
