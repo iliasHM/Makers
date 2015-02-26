@@ -4,4 +4,7 @@ class MachineMaterial < ActiveRecord::Base
 
   validates :colors, presence: true
 
+  def name
+    "#{colors}"
+  end
 end
