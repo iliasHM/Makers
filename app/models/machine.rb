@@ -12,4 +12,8 @@ class Machine < ActiveRecord::Base
   validates  :user_id, presence: true
 
   accepts_nested_attributes_for :machine_materials
+
+  def name
+    "#{machine_model.name} - #{brand.name} - #{category.name}"
+  end
 end

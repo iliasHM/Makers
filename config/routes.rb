@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  ActiveAdmin.routes(self)
   resources :machines, only: [:index, :search, :show]
 
   namespace :accounts do

@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
       user.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
+
+  def owner_of
+    array = []
+    machines.each do |machine|
+      array << machine.machine_model.name
+    end
+    array.join(', ')
+  end
 end
 
 
