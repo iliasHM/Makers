@@ -12,42 +12,47 @@
   <%= f.input :description, :label => "Describe your machine" %>
 
 <!-- Nested Material fields DO NOT REMOVE PLZ -->
-<!--
+
       <div id="materials">
-        <%#= f.fields_for :machine_materials do |machine_material| %>
-         <%#= render 'machine_material_fields', :f => machine_material %>
-        <%# end %>
-        <div class="links">
-          <%#= link_to_add_association 'add material', f,
-            :machine_materials,
-            'data-association-insertion-method' => "append"%>
-        </div>
-      </div> -->
+        <%= f.simple_fields_for :machine_materials do |machine_material| %>
+         <%= render 'machine_material_fields', :f => machine_material %>
+        <% end %>
+      </div>
+
+      <div class="links">
+        <%= link_to_add_association 'add material', f,
+          :machine_materials,
+          'data-association-insertion-method' => "append"
+          %>
+      </div>
 
 
+<!--
   <ul class="list-inline">
-  <%= f.fields_for :machine_materials do |machine_material_form| %>
-    <li><%= machine_material_form.association :material %></li>
-    <li><%= machine_material_form.input :colors %></li>
-    <li><%= link_to "Add more" %>
-  <% end %>
+  <%#= f.fields_for :machine_materials do |machine_material_form| %>
+    <li><%#= machine_material_form.association :material %></li>
+    <li><%#= machine_material_form.input :colors %></li>
+    <li><%#= link_to "Add more" %>
+  <%# end %>
   </ul>
 
   <ul class="list-inline">
-  <%= f.fields_for :machine_materials do |machine_material_form| %>
-    <li><%= machine_material_form.association :material %></li>
-    <li><%= machine_material_form.input :colors %></li>
-    <li><%= link_to "Add more" %>
-  <% end %>
+  <%#= f.fields_for :machine_materials do |machine_material_form| %>
+    <li><%#= machine_material_form.association :material %></li>
+    <li><%#= machine_material_form.input :colors %></li>
+    <li><%#= link_to "Add more" %>
+  <%# end %>
   </ul>
 
   <ul class="list-inline">
-  <%= f.fields_for :machine_materials do |machine_material_form| %>
-    <li><%= machine_material_form.association :material %></li>
-    <li><%= machine_material_form.input :colors %></li>
-    <li><%= link_to "Add more" %>
-  <% end %>
+  <%#= f.fields_for :machine_materials do |machine_material_form| %>
+    <li><%#= machine_material_form.association :material %></li>
+    <li><%#= machine_material_form.input :colors %></li>
+    <li><%#= link_to "Add more" %>
+  <%# end %>
   </ul>
+
+  -->
 
 
   <%= f.button :submit, "Add machine", class: "btn btn-success" %>

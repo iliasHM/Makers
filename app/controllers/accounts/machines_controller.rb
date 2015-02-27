@@ -7,13 +7,14 @@ class Accounts::MachinesController < ApplicationController
     # @brands = Brand.all
     @categories = Category.all
     # @models = MachineModel.all
-    @materials = Material.all
+    @materials = Material.all.map { |m| [m.name, m.id] }
 
   end
 
   def create
-    #@materials = Material.all
+    @materials = Material.all
     @machine = @user.machines.build(machines_params_create)
+
     # description = machines_params_create[:description]
     # brand = Brand.find(machines_params_create[:brand])
     # category = Category.find(machines_params_create[:category])
@@ -24,6 +25,7 @@ class Accounts::MachinesController < ApplicationController
     if @machine.save
       redirect_to accounts_machines_path
     else
+      @materials = Material.all.map { |m| [m.name, m.id] }
       render :new
     end
   end
@@ -40,7 +42,7 @@ class Accounts::MachinesController < ApplicationController
   private
 
   def machines_params_create
-    params.require(:machine).permit(:machine_model_id, :description, machine_materials_attributes: [ :material_id, :colors ])
+    params.require(:machine).permit(:machine_model_id, :description, machine_materials_attributes: [ :id, :material_id, :colors, :_destroy ])
   end
 
   def find_user
