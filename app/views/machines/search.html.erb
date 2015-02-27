@@ -1,2 +1,24 @@
-<h1>Machines#search</h1>
-<p>Find me in app/views/machines/search.html.erb</p>
+<div class="container">
+  <div class="row">
+    <% if @users.size == 0 %>
+      <p>Sorry, no machines yet in that city!</p>
+    <% else %>
+      <% @machines.each do |machine| %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="text-center">
+            <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
+            <p>Category: <%= machine.category.name %></p>
+            <p>Modèle: <%= machine.machine_model.name %></p>
+            <p>Matériel: <%= machine.materials.map(&:name).join(",") %></p>
+            <p>Colors: <%= machine.machine_materials.map(&:colors).join(",") %></p>
+            <p>Maker: <%= machine.maker.name %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div id="map" style="width: 100%; height: 600px;">
+      </div>
+    </div>
+  </div>
+</div>

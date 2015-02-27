@@ -18,10 +18,13 @@ class MachinesController < ApplicationController
     end
   end
 
-  def search
+  def show
+    @machines = Machine.find(params[:id])
   end
 
-  def show
-    @machine = Machine.find(params[:id])
+
+  def search
+    @users = User.near(params[:search], 50)
+    @machines = Machine.all
   end
 end
