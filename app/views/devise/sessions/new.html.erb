@@ -1,41 +1,43 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="padded-small bg-white card">
-        <div class="margin-space text-center">
-            <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-lg btn-facebook" do %>
-              <i class="fa fa-facebook padded-right"></i>Log in with facebook
+<div class="bg-black mini-height">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+        <div class="padded-small bg-white card">
+          <div class="margin-space text-center">
+              <%= link_to user_omniauth_authorize_path(:facebook), class: "btn btn-lg btn-facebook" do %>
+                <i class="fa fa-facebook padded-right"></i>Log in with facebook
+              <% end %>
+            </div>
+            <div class="text-center padded-small">
+              OR
+            </div>
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs padded-left padded-right">
+                <%= f.input :email, required: false, autofocus: true, placeholder: "your email address", label: false %>
+                <%= f.input :password, required: false, placeholder: "your password ", label: false %>
+                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+              </div>
+
+              <div class="form-actions text-center">
+                <%= f.button :submit, "Log in", class:"btn btn-success" %>
+              </div>
             <% end %>
-          </div>
-          <div class="text-center padded-small">
-            OR
-          </div>
-          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <%= f.error_notification %>
-            <div class="form-inputs padded-left padded-right">
-              <%= f.input :email, required: false, autofocus: true, placeholder: "your email address", label: false %>
-              <%= f.input :password, required: false, placeholder: "your password ", label: false %>
-              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            <div class="text-center padded-small">
+              Not registered yet?
+              <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+                <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-default" %><br />
+              <% end %>
             </div>
 
-            <div class="form-actions text-center">
-              <%= f.button :submit, "Log in", class:"btn btn-success" %>
+            <div class="text-center">
+              Forgot your password?
+              <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Get a new one", new_password_path(resource_name), class:"btn btn-default"  %><br />
+              <% end %>
             </div>
-          <% end %>
-          <div class="text-center padded-small">
-            Not registered yet?
-            <% if devise_mapping.registerable? && controller_name != 'registrations' %>
-              <%= link_to "Sign up", new_registration_path(resource_name), class:"btn btn-default" %><br />
-            <% end %>
-          </div>
 
-          <div class="text-center">
-            Forgot your password?
-            <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-              <%= link_to "Get a new one", new_password_path(resource_name), class:"btn btn-default"  %><br />
-            <% end %>
           </div>
-
         </div>
       </div>
     </div>
