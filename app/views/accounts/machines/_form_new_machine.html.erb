@@ -14,7 +14,7 @@
 <!-- Nested Material fields DO NOT REMOVE PLZ -->
 
       <div id="materials">
-        <%= f.fields_for :machine_materials do |machine_material| %>
+        <%= f.simple_fields_for :machine_materials do |machine_material| %>
          <%= render 'machine_material_fields', :f => machine_material %>
         <% end %>
       </div>
