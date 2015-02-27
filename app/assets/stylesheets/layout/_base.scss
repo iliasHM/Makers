@@ -11,7 +11,8 @@
  }
 
  body {
-  background: $grayish;
+  background: white;
+  min-height: 800px;
  }
 
  .help-block {
@@ -21,3 +22,11 @@
   text-align: left;
   padding-left: 3%;
  }
+
+.mini-height {
+  min-height: 600px;
+}
+
+ // .container-fluid {
+ //  margin-top: -50px;
+ // }

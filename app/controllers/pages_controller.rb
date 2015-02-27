@@ -16,4 +16,7 @@ skip_before_action :authenticate_user!
       #   })
     end
   end
+
+  def credits
+  end
 end
