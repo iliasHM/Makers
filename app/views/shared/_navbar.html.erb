@@ -9,8 +9,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">
-        <h1 class="logo"><%= image_tag "logo.svg" %>
-        Makers</h1>
+        <h1 class="logo"><%= image_tag "apron-black.svg", class: "logo" %>
+        Fabily</h1>
       </a>
     </div>
 
@@ -38,7 +38,7 @@
             <%= link_to 'Connexion', new_user_session_path %>
         </li>
         <li>
-          <%= link_to t(".top_call_to_action", default: "View a machine"), machines_path, class: "btn" %>
+          <%= link_to t(".top_call_to_action", default: "Find machines"), machines_path, class: "btn" %>
         </li>
         <li>
           <%= link_to t(".top_call_to_action", default: "Add a machine"), new_accounts_machine_path, class: "btn" %>
