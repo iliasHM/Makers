@@ -2,9 +2,10 @@ Rails.application.routes.draw do
 
 
   ActiveAdmin.routes(self)
+
   resources :machines, only: [:index, :search, :show]
 
-  namespace :accounts do
+  resource :accounts do
     resources :machines, only: [:index, :new, :create, :edit, :update]
     # get 'machines/new'
 
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   get "/credits", to: "pages#credits"
+  get "/search", to: "machines#search"
 
   #Omniauth callback
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
