@@ -32,6 +32,10 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
+#Paperclip
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
+
 #Cocoon
 gem "cocoon"
 
