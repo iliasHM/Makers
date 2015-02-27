@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :machines, only: [:index, :search, :show]
 
-  namespace :accounts do
+  resource :accounts, only:[:show] do
     resources :machines, only: [:index, :new, :create, :edit, :update]
     # get 'machines/new'
 

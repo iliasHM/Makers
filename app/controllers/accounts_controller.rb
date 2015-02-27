@@ -1,9 +1,8 @@
 class AccountsController < ApplicationController
   def show
+    @user = current_user
   end
 
-  def edit
-  end
 
   def update
     current_user.update(account_params)
@@ -13,6 +12,6 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :picture, :phone_number)
   end
 end
