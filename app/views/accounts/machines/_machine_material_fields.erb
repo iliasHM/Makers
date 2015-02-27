@@ -1,0 +1,11 @@
+<div class="control-group nested-fields">
+  <div class="form-group">
+    <ul class="list-inline">
+      <%= f.fields_for :machine_materials do |machine_material| %>
+        <%= machine_material.select :material, @materials %>
+        <%= machine_material.input :colors %>
+      <% end %>
+    <%= link_to_remove_association "remove", f %>
+    </ul>
+  </div>
+</div>
