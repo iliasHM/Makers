@@ -61,6 +61,11 @@ GEM
     autoprefixer-rails (5.1.5)
       execjs
       json
+    aws-sdk (1.62.0)
+      aws-sdk-v1 (= 1.62.0)
+    aws-sdk-v1 (1.62.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -79,6 +84,10 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.5)
+      climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -172,6 +181,11 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    paperclip (4.2.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.18.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
@@ -278,6 +292,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  aws-sdk (< 2.0)
   better_errors
   binding_of_caller
   bootstrap-sass
@@ -294,6 +309,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook
+  paperclip
   pg
   pry-byebug
   pry-rails
