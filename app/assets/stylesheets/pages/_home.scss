@@ -1,16 +1,11 @@
 #banner {
   background: image-url('outils.jpg');
-  color: white;
-  // padding: px 0;
   background-size: cover;
-  height: 600px;
-  padding-left: 3%;
+  height: 800px;
+  margin-top: -70px;
+  color: white;
   h1 {
-  font-size: 70px;
-  }
-  p {
-  font-size: 25px;
-  font-weight: 100;
-  padding-left: 1.5%;
+    font-size: 100px;
+    margin-top: 170px;
   }
 }
