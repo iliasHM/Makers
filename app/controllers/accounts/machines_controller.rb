@@ -7,10 +7,12 @@ class Accounts::MachinesController < ApplicationController
     # @brands = Brand.all
     @categories = Category.all
     # @models = MachineModel.all
-    # @materials = Material.all
+    @materials = Material.all
+
   end
 
   def create
+    #@materials = Material.all
     @machine = @user.machines.build(machines_params_create)
     # description = machines_params_create[:description]
     # brand = Brand.find(machines_params_create[:brand])
@@ -18,6 +20,7 @@ class Accounts::MachinesController < ApplicationController
     # machine_model = MachineModel.find(machines_params_create[:machine_model])
     # machine_material = MachineMaterial.find(machines_params_create[:machine_material])
     # @machine = @user.machines.build(brand: brand, category: category, machine_model: machine_model, description: description)
+
     if @machine.save
       redirect_to accounts_machines_path
     else

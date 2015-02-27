@@ -32,6 +32,9 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
+#Cocoon
+gem "cocoon"
+
 #Figaro
 gem "figaro"
 

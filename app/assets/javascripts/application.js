@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+<<<<<<< HEAD
 //= require underscore
 //= require gmaps/google
+=======
+//= require cocoon
+>>>>>>> add-several-materials
 //= require_tree .

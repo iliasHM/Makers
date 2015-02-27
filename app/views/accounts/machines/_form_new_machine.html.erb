@@ -1,0 +1,60 @@
+<%= simple_form_for(@machine, url: accounts_machines_path, html: { multipart: true }) do |f| %>
+  <%= f.error_notification %>
+  <div id="machines_category">
+    <%= f.input :category, :label => "Select machine category", collection: @categories, required: true, prompt: "Categories" %>
+
+    <%#= f.input :brand, collection: @brands, required: true, autofocus: true %>
+
+
+    <%= f.association :machine_model, :collection => MachineModel.all.order(:name), required: true  %>
+  </div>
+
+  <%= f.input :description, :label => "Describe your machine" %>
+
+<!-- Nested Material fields DO NOT REMOVE PLZ -->
+<!--
+      <div id="materials">
+        <%#= f.fields_for :machine_materials do |machine_material| %>
+         <%#= render 'machine_material_fields', :f => machine_material %>
+        <%# end %>
+        <div class="links">
+          <%#= link_to_add_association 'add material', f,
+            :machine_materials,
+            'data-association-insertion-method' => "append"%>
+        </div>
+      </div> -->
+
+
+  <ul class="list-inline">
+  <%= f.fields_for :machine_materials do |machine_material_form| %>
+    <li><%= machine_material_form.association :material %></li>
+    <li><%= machine_material_form.input :colors %></li>
+    <li><%= link_to "Add more" %>
+  <% end %>
+  </ul>
+
+  <ul class="list-inline">
+  <%= f.fields_for :machine_materials do |machine_material_form| %>
+    <li><%= machine_material_form.association :material %></li>
+    <li><%= machine_material_form.input :colors %></li>
+    <li><%= link_to "Add more" %>
+  <% end %>
+  </ul>
+
+  <ul class="list-inline">
+  <%= f.fields_for :machine_materials do |machine_material_form| %>
+    <li><%= machine_material_form.association :material %></li>
+    <li><%= machine_material_form.input :colors %></li>
+    <li><%= link_to "Add more" %>
+  <% end %>
+  </ul>
+
+
+  <%= f.button :submit, "Add machine", class: "btn btn-success" %>
+<% end %>
+
+<%= form_tag get_models_path, remote: true, id: "category_id_form" do %>
+  <%= hidden_field_tag :category_id %>
+<% end %>
+
+
