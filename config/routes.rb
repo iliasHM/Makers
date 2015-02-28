@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :machines, only: [:index, :search, :show]
 
-  resource :accounts, only:[:show] do
+  resources :users
+
+  namespace :accounts do
     resources :machines, only: [:index, :new, :create, :edit, :update]
     # get 'machines/new'
 
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
   get "/credits", to: "pages#credits"
 
   #Omniauth callback
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

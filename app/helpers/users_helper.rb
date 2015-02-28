@@ -1,5 +1,5 @@
-module AccountsHelper
-  def account_picture(version=nil)
+module UsersHelper
+  def user_picture(version=nil)
     if current_user.uid
       current_user.picture
     else
@@ -7,7 +7,7 @@ module AccountsHelper
     end
   end
 
-  def account_picture_navbar(version=nil)
+  def user_picture_navbar(version=nil)
     if current_user.uid
       current_user.picture
     else
