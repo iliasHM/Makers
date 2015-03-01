@@ -1,28 +1,29 @@
 Rails.application.routes.draw do
-
-
   ActiveAdmin.routes(self)
+  #Omniauth callback
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }
+
+  root to: "pages#home"
+
   resources :machines, only: [:index, :search, :show]
 
   resources :users
 
-  namespace :accounts do
-    resources :machines, only: [:index, :new, :create, :edit, :update]
-    # get 'machines/new'
-
-    # get 'machines/edit'
-
-    # get 'machines/index'
+  resource :account, only: [:show] do
+    resources :machines, only: [:index, :new, :create, :edit, :update], module: :accounts
   end
+
+
+
+
 
   post "/get_models", to: "javascript#get_models"
 
-  root to: "pages#home"
+
 
   get "/credits", to: "pages#credits"
 
-  #Omniauth callback
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

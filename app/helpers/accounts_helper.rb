@@ -1,4 +1,4 @@
-module UsersHelper
+module AccountsHelper
   def user_picture(version=nil)
     if current_user.uid
       current_user.picture
