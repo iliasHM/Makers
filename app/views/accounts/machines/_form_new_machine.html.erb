@@ -1,4 +1,4 @@
-<%= simple_form_for(@machine, url: accounts_machines_path, html: { multipart: true }) do |f| %>
+<%= simple_form_for(@machine, url: account_machines_path, html: { multipart: true }) do |f| %>
   <%= f.error_notification %>
   <div id="machines_category">
     <%= f.input :category, :label => "Select machine category", collection: @categories, required: true, prompt: "Categories" %>
@@ -9,7 +9,7 @@
     <%= f.association :machine_model, :collection => MachineModel.all.order(:name), required: true  %>
   </div>
 
-  <%= f.input :description, :label => "Describe your machine" %>
+  <%= f.input :description, :label => "Tell us more about your machine" %>
 
 <!-- Nested Material fields DO NOT REMOVE PLZ -->
 
@@ -20,10 +20,7 @@
       </div>
 
       <div class="links">
-        <%= link_to_add_association 'add material', f,
-          :machine_materials,
-          'data-association-insertion-method' => "append"
-          %>
+        <%= link_to_add_association 'add material', f, :machine_materials %>
       </div>
 
 
