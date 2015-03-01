@@ -24,7 +24,7 @@ module Accounts
       @machine = @user.machines.build(machines_params_create)
 
       if @machine.save
-        redirect_to accounts_machines_path
+        redirect_to account_machines_path
       else
         @materials = Material.all.map { |m| [m.name, m.id] }
         render :new

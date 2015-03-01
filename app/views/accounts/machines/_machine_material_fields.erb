@@ -1,7 +1,9 @@
 <div class="control-group nested-fields">
   <div class="form-group">
-    <%= f.select :material_id, @materials %>
-    <%= f.input :colors %>
-    <%= link_to_remove_association "remove", f %>
+    <ul class="list-inline">
+      <li><%= f.input :material_id, :label => "Material", :collection => @materials %></li>
+      <li><%= f.input :colors %></li>
+      <li><%= link_to_remove_association "remove", f, class: "pull-right" %></li>
+    </ul>
   </div>
 </div>
