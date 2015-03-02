@@ -41,6 +41,12 @@ class User < ActiveRecord::Base
     array.join(', ')
   end
 
+  def self.process_uri(uri)
+   avatar_url = URI.parse(uri)
+   avatar_url.scheme = 'https'
+   avatar_url.to_s
+  end
+
 end
 
 
