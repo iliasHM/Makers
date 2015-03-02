@@ -39,8 +39,12 @@ ActiveRecord::Schema.define(version: 20150302112937) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
   end
 
   create_table "machine_materials", force: :cascade do |t|
@@ -58,8 +62,12 @@ ActiveRecord::Schema.define(version: 20150302112937) do
     t.string   "name"
     t.integer  "brand_id"
     t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "model_picture_file_name"
+    t.string   "model_picture_content_type"
+    t.integer  "model_picture_file_size"
+    t.datetime "model_picture_updated_at"
   end
 
   add_index "machine_models", ["brand_id"], name: "index_machine_models_on_brand_id", using: :btree
