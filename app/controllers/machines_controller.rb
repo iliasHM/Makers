@@ -24,6 +24,6 @@ class MachinesController < ApplicationController
 
 
   def search
-    @users = User.near(params[:search], 50)
+    @workshops = Workshop.near(params[:search], 50)
   end
 end
