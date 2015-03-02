@@ -4,6 +4,9 @@ ActiveAdmin.register User do
   index do
     selectable_column
     column :id
+    column "Model Picture" do |event|
+    image_tag(event.picture.url(:little), height: "100")
+    end
     column :name
     column :email
     column :owner_of
