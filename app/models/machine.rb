@@ -1,6 +1,6 @@
 class Machine < ActiveRecord::Base
   belongs_to :machine_model
-  belongs_to :maker, class_name: "User", foreign_key: :user_id
+  belongs_to :workshop
 
   has_one    :category, through: :machine_model
   has_one    :brand, through: :machine_model
@@ -9,7 +9,7 @@ class Machine < ActiveRecord::Base
   has_many   :materials, through: :machine_materials
 
   validates  :machine_model_id, presence: true
-  validates  :user_id, presence: true
+  validates  :workshop_id, presence: true
 
   accepts_nested_attributes_for :machine_materials
 

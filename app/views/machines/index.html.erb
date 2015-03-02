@@ -14,7 +14,7 @@
           <p>Modèle: <%= machine.machine_model.name %></p>
           <p>Matériel: <%= machine.materials.map(&:name).join(",") %></p>
           <p>Colors: <%= machine.machine_materials.map(&:colors).join(",") %></p>
-          <p>Maker: <%= machine.maker.name %></p>
+          <p>Maker: <%= machine.workshop.maker.name %></p>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227142623) do
+ActiveRecord::Schema.define(version: 20150302112937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,11 +72,11 @@ ActiveRecord::Schema.define(version: 20150227142623) do
     t.integer  "machine_model_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "user_id"
+    t.integer  "workshop_id"
   end
 
   add_index "machines", ["machine_model_id"], name: "index_machines_on_machine_model_id", using: :btree
-  add_index "machines", ["user_id"], name: "index_machines_on_user_id", using: :btree
+  add_index "machines", ["workshop_id"], name: "index_machines_on_workshop_id", using: :btree
 
   create_table "materials", force: :cascade do |t|
     t.string   "name"
@@ -104,9 +104,6 @@ ActiveRecord::Schema.define(version: 20150227142623) do
     t.string   "token"
     t.datetime "token_expiry"
     t.boolean  "admin",                  default: false, null: false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "address"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -120,10 +117,22 @@ ActiveRecord::Schema.define(version: 20150227142623) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "workshops", force: :cascade do |t|
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "workshops", ["user_id"], name: "index_workshops_on_user_id", using: :btree
+
   add_foreign_key "machine_materials", "machines"
   add_foreign_key "machine_materials", "materials"
   add_foreign_key "machine_models", "brands"
   add_foreign_key "machine_models", "categories"
   add_foreign_key "machines", "machine_models"
-  add_foreign_key "machines", "users"
+  add_foreign_key "machines", "workshops"
+  add_foreign_key "workshops", "users"
 end

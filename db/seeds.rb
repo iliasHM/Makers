@@ -18,11 +18,20 @@ users = 5.times.map do
     password: "12345678",
     password_confirmation: "12345678",
     email: Faker::Internet.free_email,
-    address: address_array.sample
     })
   user.save!
 
   user
+end
+
+Workshop.destroy_all
+workshops = 5.times.map do
+  workshop = Workshop.new({
+    address: address_array.sample,
+    maker: users.sample,
+    })
+  workshop.save!
+  workshop
 end
 
 Brand.destroy_all
@@ -76,7 +85,7 @@ machines = 6.times.map do
     length: Faker::Number.number(2),
     width: Faker::Number.number(2),
     description: Faker::Lorem.paragraph,
-    maker: users.sample,
+    workshop: workshops.sample,
     machine_model: machine_models.sample,
     })
   machine.machine_materials.build(material: materials.sample, colors: colors_string )
