@@ -3,7 +3,7 @@ module MachinesHelper
     if machine.machine_model.model_picture
       machine.machine_model.model_picture
     else
-      machine.category.icon
+      machine.category.icon.url(version)
     end
   end
 end

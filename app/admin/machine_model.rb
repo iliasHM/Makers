@@ -4,6 +4,7 @@ ActiveAdmin.register MachineModel do
 
   index do
     selectable_column
+    column :model_picture
     column :id
     column :name
     column :brand
