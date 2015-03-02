@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Dashboard" do
       panel "Recent Machine" do
         ul do
           Machine.all.each do |machine|
-            li link_to(machine.name, admin_machine_path(machine))
+            li link_to(machine.maker.name + " - " + machine.name, admin_machine_path(machine))
           end
         end
       end
