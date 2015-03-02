@@ -42,7 +42,12 @@
           <%= link_to t(".top_call_to_action", default: "Find machines"), machines_path, class: "btn" %>
         </li>
         <li>
-          <%= link_to t(".top_call_to_action", default: "Add a machine"), new_account_machine_path, class: "btn" %>
+          <% if user_signed_in? && current_user.workshop != nil %>
+            <%= link_to t(".top_call_to_action", default: "Add a machine"), new_account_workshop_machine_path(current_user.workshop), class: "btn" %>
+
+          <% else %>
+            <%= link_to t(".top_call_to_action", default: "Add a machine"), new_account_workshop_path, class: "btn" %>
+          <% end %>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

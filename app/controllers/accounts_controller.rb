@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   def show
     @user = current_user
+    @workshop = @user.workshop
   end
 
   # def edit

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :workshops, dependent: :destroy
-  has_many :machines, through: :workshops
+  has_one :workshop, dependent: :destroy
+  has_many :machines, through: :workshop
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
