@@ -8,6 +8,9 @@
     <% @machines.each do |machine| %>
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="light-padded">
+        <div class="padded-small">
+          <%= image_tag machine.machine_model.model_picture %>
+        </div>
         <div class="text-center">
           <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
           <p>Category: <%= machine.category.name %></p>
