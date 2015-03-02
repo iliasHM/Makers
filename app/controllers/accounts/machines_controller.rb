@@ -21,7 +21,7 @@ module Accounts
 
     def create
       @materials = Material.all
-      @machine = @user.machines.build(machines_params_create)
+      @machine = @user.workshop.machines.build(machines_params_create)
 
       if @machine.save
         redirect_to account_machines_path
