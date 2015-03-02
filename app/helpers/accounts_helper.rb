@@ -14,5 +14,4 @@ module AccountsHelper
       current_user.picture_file_name ? current_user.picture.url(version) : "laser_cutter.svg"
     end
   end
-
 end

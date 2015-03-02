@@ -1,14 +1,13 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :machines, dependent: :destroy
+  has_many :workshops, dependent: :destroy
+  has_many :machines, through: :workshops
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [ :facebook ]
 
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
 
   has_attached_file :picture,
     styles: { medium: "300x300>", little: "200x200>", thumb: "100x100>" }

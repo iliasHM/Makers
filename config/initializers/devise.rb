@@ -8,7 +8,7 @@ Devise.setup do |config|
 
   #Facebook config
   Devise.setup do |config|
-    config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"], scope: 'email'
+    config.omniauth :facebook, ENV["FB_ID"], ENV["FB_SECRET"], scope: 'email', secure_image_url: true
   end
 
 
