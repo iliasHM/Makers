@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <% if @workshop.machines.any? %>
+        <%= @workshop.machines.map(&:name) %>
+      <% else %>
+        <p>no machine yet</p>
+      <% end %>
+    </div>
+    <%= link_to "Add a machine", new_account_workshop_machine_path, class: "btn btn-primary" %>
+  </div>
+</div>
