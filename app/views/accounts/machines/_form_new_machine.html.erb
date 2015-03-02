@@ -1,4 +1,4 @@
-<%= simple_form_for(@machine, url: account_machines_path, html: { multipart: true }) do |f| %>
+<%= simple_form_for(@machine, url: account_workshop_machines_path, html: { multipart: true }) do |f| %>
   <%= f.error_notification %>
   <div id="machines_category">
     <%= f.input :category, :label => "Select machine category", collection: @categories, required: true, prompt: "Categories" %>
@@ -22,6 +22,7 @@
       <div class="links">
         <%= link_to_add_association 'add material', f, :machine_materials %>
       </div>
+
 
 
 <!--
