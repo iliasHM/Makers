@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302112937) do
+ActiveRecord::Schema.define(version: 20150303100356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,20 @@ ActiveRecord::Schema.define(version: 20150302112937) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string   "state"
+    t.string   "file"
+    t.integer  "price_cents"
+    t.text     "description"
+    t.integer  "machine_id"
+    t.integer  "machine_material_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "orders", ["machine_id"], name: "index_orders_on_machine_id", using: :btree
+  add_index "orders", ["machine_material_id"], name: "index_orders_on_machine_material_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -142,5 +156,7 @@ ActiveRecord::Schema.define(version: 20150302112937) do
   add_foreign_key "machine_models", "categories"
   add_foreign_key "machines", "machine_models"
   add_foreign_key "machines", "workshops"
+  add_foreign_key "orders", "machine_materials"
+  add_foreign_key "orders", "machines"
   add_foreign_key "workshops", "users"
 end

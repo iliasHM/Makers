@@ -7,6 +7,7 @@ class Machine < ActiveRecord::Base
 
   has_many   :machine_materials, dependent: :destroy
   has_many   :materials, through: :machine_materials
+  has_many   :orders
 
   validates  :machine_model_id, presence: true
   validates  :workshop_id, presence: true

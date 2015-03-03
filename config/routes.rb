@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :machines, only: [:index, :search, :show]
 
 
+
   resource :account, only: [:show] do
     resource :workshop, only: [:show, :new, :create, :edit, :update], module: :accounts do
       resources :machines, only: [:new, :create]

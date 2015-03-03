@@ -18,6 +18,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
 
+# State Machine
+gem 'state_machine', '~> 1.2.0'
+
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
