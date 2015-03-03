@@ -9,13 +9,14 @@ Rails.application.routes.draw do
 
   resources :machines, only: [:index, :search, :show]
 
-
+  resources :orders, only: [:create, :index], module: :users
 
   resource :account, only: [:show] do
     resource :workshop, only: [:show, :new, :create, :edit, :update], module: :accounts do
       resources :machines, only: [:new, :create]
     end
     resources :machines, only: [:index, :edit, :update], module: :accounts
+    resources :orders, only: [:index, :show, :update], module: :accounts
   end
 
   post "/get_models", to: "javascript#get_models"
