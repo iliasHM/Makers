@@ -21,6 +21,9 @@ gem 'activeadmin', github: 'activeadmin'
 # State Machine
 gem 'state_machine', '~> 1.2.0'
 
+# Money-Rails, money ~> 6.5.1, monetize ~> 1.1.0
+gem 'money-rails', '~> 1.3.0'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -5,6 +5,12 @@ class Order < ActiveRecord::Base
   validates  :description, presence: :true
   validates  :file, presence: :true
 
+  register_currency :eur
+  monetize :price_cents, :numericality => {
+    :greater_than_or_equal_to => 0,
+    :less_than_or_equal_to => 10000
+  }
+
   state_machine initial: :asking do
     state :asking          # Designer ask for price
     state :proposed_price  # Maker propose price, waits for Designer to accept
