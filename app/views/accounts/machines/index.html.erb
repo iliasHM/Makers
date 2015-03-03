@@ -1,24 +1,23 @@
-<div class="container">
-  <div class="container light-padded">
-    <div class="row">
-      <h1 class="text-center">Your machines</h1>
-    </div>
-  </div>
-
-    <div class="row">
-    <% @machines.each do |machine| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="text-center">
-        <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
-        <p>Category: <%= machine.category.name %></p>
-        <p>Model: <%= machine.machine_model.name %></p>
-        <p>Material: <%= machine.materials.map(&:name).join(",") %></p>
-        <p>Colors: <%= machine.machine_materials.map(&:colors).join(",") %></p>
-        <p>Maker: <%= machine.workshop.maker.name %></p>
-
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="mini-height">
+      <div class="col-md-3">
+        <%= render 'shared/profilesidebar' %>
+      </div>
+      <div class="col-md-8">
+        <% @machines.each do |machine| %>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="text-center">
+              <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
+              <p>Category: <%= machine.category.name %></p>
+              <p>Model: <%= machine.machine_model.name %></p>
+              <p>Material: <%= machine.materials.map(&:name).join(",") %></p>
+              <p>Colors: <%= machine.machine_materials.map(&:colors).join(",") %></p>
+              <p>Maker: <%= machine.workshop.maker.name %></p>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
   </div>
 </div>

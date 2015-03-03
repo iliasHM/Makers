@@ -1,49 +1,36 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
-      <div class="sidebar">
-        <h2>My Account</h2>
-        <h2>My Orders</h2>
-        <h2>Messages</h2>
-        <% if @user.workshop %>
-          <h2><%= link_to "My Workshop", account_workshop_path %></h2>
-          <h2>My Machines</h2>
-        <% end %>
+    <div class="mini-height">
+      <div class="col-md-3">
+        <%= render 'shared/profilesidebar' %>
       </div>
-    </div>
-    <div class="col-md-8">
-
-
-    <div class="user-profile">
-      <!-- link to profile_picture -->
-      <div class="col-sm-4 right">
-        <%= image_tag user_picture(:medium) %>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="left-padded">
-          <% if @user.name %>
-            <h1><%= @user.name.capitalize %></h1>
-          <% end %>
-
-          <br><br>
-
-          <dl class="dl-horizontal">
-            <dt>Firstname</dt>
-            <dd><%= @user.firstname %></dd>
-            <dt>Lastname</dt>
-            <dd><%= @user.lastname %></dd>
-            <dt>Email</dt>
-            <dd><%= @user.email %></dd>
-            <dt>Phone number</dt>
-            <dd><%= @user.phone_number %></dd>
-            <dt>Description</dt>
-            <dd><%= @user.description %></dd>
-          </dl>
-
-          <%= link_to "Update profile", edit_user_registration_path, class: "btn btn-success pull-right" %>
+      <div class="col-md-8">
+        <div class="user-profile">
+          <div class="text-center">
+            <h2><%= @user.name %>'s Account</h2>
+          </div>
+          <%= image_tag user_picture(:medium) %>
+          <div class="left-padded">
+            <% if @user.name %>
+              <h1><%= @user.name.capitalize %></h1>
+            <% end %>
+            <br><br>
+            <dl class="dl-horizontal">
+              <dt>Firstname</dt>
+              <dd><%= @user.firstname %></dd>
+              <dt>Lastname</dt>
+              <dd><%= @user.lastname %></dd>
+              <dt>Email</dt>
+              <dd><%= @user.email %></dd>
+              <dt>Phone number</dt>
+              <dd><%= @user.phone_number %></dd>
+              <dt>Description</dt>
+              <dd><%= @user.description %></dd>
+            </dl>
+            <%= link_to "Update profile", edit_user_registration_path, class: "btn btn-success pull-right" %>
+          </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
 </div>

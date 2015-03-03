@@ -1,12 +1,25 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <% if @workshop.machines.any? %>
-        <%= @workshop.machines.map(&:name) %>
-      <% else %>
-        <p>no machine yet</p>
-      <% end %>
+    <div class="mini-height">
+      <div class="col-md-3">
+        <%= render 'shared/profilesidebar' %>
+      </div>
+      <div class="col-md-8">
+        <div class="text-center">
+          <h2><%= @workshop.maker.name %>'s Workshop</h2>
+        </div>
+        <div class="padded-left">
+          <% if @workshop.machines.any? %>
+            <h3>All my machines</h3>
+            <%= @workshop.machines.map(&:name).join("") %>
+          <% else %>
+            <p>no machine yet</p>
+          <% end %>
+        </div>
+        <div class="padded-left padded-small">
+        <%= link_to "Add a machine", new_account_workshop_machine_path, class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
-    <%= link_to "Add a machine", new_account_workshop_machine_path, class: "btn btn-primary" %>
   </div>
 </div>
