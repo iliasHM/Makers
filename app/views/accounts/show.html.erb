@@ -10,45 +10,34 @@
             <h3><em>My Account</em></h3>
           </div>
         </div>
-        <div class="user-profile">
+        <div class="row">
           <%= simple_form_for(@user, url: account_path(@user), html: { method: :put }) do |f| %>
-            <%= f.error_notification %>
-            <div class="col-sm-6">
-              <h4>Username</h4>
-              <%= f.input :name, required: true,label: 'Username' %>
-              <%= f.input :firstname, required: false, autofocus: true, label: 'First name' %>
-              <%= f.input :lastname, required: false, autofocus: true, label: 'Last name' %>
-              <%= f.submit %>
-
+          <%= f.error_notification %>
+          <div class="col-md-6">
+            <div class="user-profile">
+              <h4>Your Name</h4>
+              <%= f.input :name, label: 'Username' %>
+              <%= f.input :firstname, label: 'First name' %>
+              <%= f.input :lastname, label: 'Last name' %>
+              <div class="padded-small"></div>
+              <h4>Details</h4>
+              <%= f.input :description, label: 'About you' %>
+              <%= f.input :phone_number, label: 'Phone number' %>
             </div>
+          </div>
+          <div class="col-md-6">
+            <div class="user-profile">
+            <h4>Your profile picture</h4>
+              <%= image_tag user_picture(:medium) %>
+              <div class="padded-small">
+                <%= f.input :picture, label: 'Update your picture', class: "text-center" %>
+              </div>
+              <div class="margin-neg">
+                <%= f.button :submit, 'Save', class: "btn btn-success" %>
+              </div>
           <% end %>
-
-            <div>
-
             </div>
-              <% if @user.name %>
-                <h1><%= @user.name.capitalize %></h1>
-              <% end %>
-              <br><br>
-              <dl class="dl-horizontal">
-                <dt>Firstname</dt>
-                <dd><%= @user.firstname %></dd>
-                <dt>Lastname</dt>
-                <dd><%= @user.lastname %></dd>
-                <dt>Email</dt>
-                <dd><%= @user.email %></dd>
-                <dt>Phone number</dt>
-                <dd><%= @user.phone_number %></dd>
-                <dt>Description</dt>
-                <dd><%= @user.description %></dd>
-              </dl>
-              <%= link_to "Update profile", edit_user_registration_path, class: "btn btn-success pull-right" %>
           </div>
-          <div class="col-sm-6">
-            <%= image_tag user_picture(:medium) %>
-
-          </div>
-
         </div>
       </div>
     </div>
