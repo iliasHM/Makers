@@ -24,7 +24,14 @@
                   Maker: <%= order.machine.workshop.maker.name %>
                 </li>
                 <li>
-                  Status: <%= order.state %>
+                  <% if order.state == "asking" %>
+                   <p>Status: <%= order.state %></p>
+                   <% elsif order.state == "proposed_price" %>
+                   <p>Price proposes <%= order.price %></p>
+                   <%= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary" %>
+                   <% else %>
+                   <%= link_to "Complete order", account_order_path(order), method: :put, class: "btn btn-primary" %>
+                   <% end %>
                 </li>
               </ul>
             </div>
