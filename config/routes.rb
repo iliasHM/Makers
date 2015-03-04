@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
 
 
-  resource :account, only: [:show] do
+  resource :account, only: [:show, :edit, :update] do
     resource :workshop, only: [:show, :new, :create, :edit, :update], module: :accounts do
       resources :machines, only: [:new, :create]
     end

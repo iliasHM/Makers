@@ -1,11 +1,30 @@
 .sidebar {
   padding: 10%;
-  height: 622px;
+  height: 650px;
   background-color: $porcelain;
   margin-top: -22px;
 }
 
 .user-profile {
-  padding: 10%;
+  padding: 5%;
   margin-top: -22px;
 }
+
+.outer {
+  border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
+  position: relative;
+  height: 70px;
+  margin-top: -22px;
+  width: 100%;
+}
+
+.inner {
+  position: absolute;
+  top: 50%;
+  height: 6em;
+  margin-top: -2.5em;
+  text-align: center;
+  padding-left: 2%;
+}
+
+/** Style for demonstration purpose only **/
