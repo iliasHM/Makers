@@ -1,8 +1,32 @@
-<% @orders.each do |order| %>
-<div class="light-padded">
-<%= order.description %>
-<%= order.machine.workshop.maker.name %>
-<%= order.state %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="mini-height">
+      <div class="col-md-3">
+        <%= render 'shared/profilesidebar' %>
+      </div>
+      <div class="col-md-9">
+        <div class="outer">
+          <div class="inner">
+            <h3><em>Orders List</em></h3>
+          </div>
+        </div>
+        <div>
+          <% @orders.each do |order| %>
+            <div class="light-padded">
+              <ul>
+                <li>Desc: <%= order.description %>
+                </li>
+                <li>
+                  Maker: <%= order.machine.workshop.maker.name %>
+                </li>
+                <li>
+                  Status: <%= order.state %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<% end %>
