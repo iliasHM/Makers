@@ -10,7 +10,7 @@ module Accounts
 
       if @order.accept
         flash[:notice] = "Accepted proposition"
-        redirect_to account_path
+        redirect_to account_orders_path
       else
         flash.now[:alert] = "Unable to accept proposition"
         render 'accounts/orders/'
