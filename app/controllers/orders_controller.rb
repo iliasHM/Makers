@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.designer = current_user
+    @order.state = "asking"
     if @order.save
       redirect_to account_orders_path
     else
@@ -26,7 +28,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :machine_id, :machine_material_id, :description, :created_at, :updated_at)
+    params.require(:order).permit(:machine_id, :machine_material_id, :description)
   end
 
   def find_user
