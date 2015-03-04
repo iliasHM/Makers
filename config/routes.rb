@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     resources :machines, only: [:index, :edit, :update], module: :accounts
     resources :orders, only: [:index, :show, :update], module: :accounts
+    resources :received_orders, only: [:index, :show, :update], module: :accounts
   end
 
   post "/get_models", to: "javascript#get_models"

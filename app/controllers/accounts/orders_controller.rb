@@ -5,11 +5,22 @@ module Accounts
       @orders = @user.orders
     end
 
+    def update
+      @order            = current_user.orders.find(params[:id])
+
+      if @order.accept
+        flash[:notice] = "Accepted proposition"
+        redirect_to account_path
+      else
+        flash.now[:alert] = "Unable to accept proposition"
+        render 'accounts/orders/'
+      end
+    end
 
     private
 
     def order_params
-      params.require(:order).permit(:user_id, :machine_id, :machine_material_id, :description, :created_at, :updated_at)
+      params.require(:order).permit(:price)
     end
 
     def find_user

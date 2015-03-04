@@ -1,9 +1,18 @@
 class Order < ActiveRecord::Base
+  monetize :price_cents
+
   belongs_to :machine
   belongs_to :machine_material
-  belongs_to :designer, class_name: "User", foreign_key: :user_id
+  belongs_to :designer, class_name: "User", foreign_key: :designer_id
+  belongs_to :maker,    class_name: "User", foreign_key: :maker_id
 
-  validates :user_id, presence: :true
+  validates :designer_id, presence: true
+  validates :maker_id,    presence: true
+  validates :price_cents, allow_nil: true,
+                          numericality: {
+                            greater_than_or_equal_to: 0,
+                            less_than_or_equal_to:    10000
+                          }
   # validates  :description, presence: :true
   # validates  :file, presence: :true
 

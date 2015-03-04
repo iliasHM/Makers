@@ -11,6 +11,7 @@ module Accounts
 
     def create
       @workshop = Workshop.new(workshop_params)
+
       if @workshop.save
         redirect_to new_account_workshop_machine_path
       else

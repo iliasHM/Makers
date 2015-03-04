@@ -1,28 +1,20 @@
 class OrdersController < ApplicationController
   before_action :find_user
 
-  def index
-    @orders = @user.orders
-  end
-
   def create
-    @order = Order.new(order_params)
+    @order          = Order.new(order_params)
+    @order.maker    = @order.machine.workshop.maker
     @order.designer = current_user
-    @order.state = "asking"
+    @order.state    = "asking"
+    @order.price    = 0
+
     if @order.save
+      flash.now[:notice] = "Order send to maker"
       redirect_to account_orders_path
     else
+      flash.now[:alert] = "Unable to send order"
       render :new
     end
-  end
-
-  def update
-
-  end
-
-  def pending
-    @machine = Machine.find(params[:machine_id])
-    @orders = @machine.orders
   end
 
   private

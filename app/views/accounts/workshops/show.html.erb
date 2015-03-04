@@ -17,11 +17,26 @@
             <div class="col-md-6">
               <% @user.workshop.machines.each do |machine| %>
                 <% machine.orders.each do |order| %>
-                  <%= order.id %>
-                  <%= order.state %>
-                  <%= order.designer.name %>
+                  <p>Order Id : <%= order.id %></p>
+                  <p><%= order.designer.name %> would like to make an order</p>
+                  <p>Message : <%= order.description %></p>
+                  <p>State : <%= order.state %></p>
+                  <p>Proposed price : <%= order.price || 'n/a' %></p>
+
+                  <% if order.state == 'asking' %>
+                    <%= simple_form_for((@order && @order == order ? @order : order), url: account_received_order_path(order)) do |f| %>
+                      <p>Make an offer : <%= f.input :price, label: "Price" %></p>
+                      <%= f.button :submit, "Reply with an offer", class: "btn btn-success" %>
+                      <p>Designer accept price, start the order</p>
+
+                    <% end %>
+                                        <% elsif order.state == 'accepted' %>
+
+                  <% end %>
                 <% end %>
               <% end %>
+
+
             </div>
             <div class="col-md-6">
 

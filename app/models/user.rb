@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_one :workshop, dependent: :destroy
   has_many :machines, through: :workshop
-  has_many :orders, dependent: :destroy
+  has_many :orders, dependent: :destroy, foreign_key: 'designer_id'
+  has_many :received_orders, dependent: :destroy, foreign_key: 'maker_id', class_name: 'Order'
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
