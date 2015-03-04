@@ -1,6 +1,6 @@
 <div class="sidebar">
   <h2><%= link_to "My Account", account_path %></h2>
-  <h2><%= link_to "My Orders", orders_path %></h2>
+  <h2><%= link_to "My Orders", account_orders_path %></h2>
   <h2>Messages</h2>
   <% if @user.workshop %>
     <h2><%= link_to "My Workshop", account_workshop_path %></h2>

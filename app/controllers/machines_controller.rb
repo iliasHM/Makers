@@ -20,10 +20,13 @@ class MachinesController < ApplicationController
 
   def show
     @machine = Machine.find(params[:id])
+    @order = Order.new
+    #Material.all(:conditions => "machine_id = '2'")
+    #@materials = Material.all.map { |m| [m.name, m.id] }
   end
-
 
   def search
     @workshops = Workshop.near(params[:search], 50)
   end
+
 end

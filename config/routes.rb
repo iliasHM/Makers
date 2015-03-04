@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :machines, only: [:index, :search, :show]
 
-  resources :orders, only: [:create, :index], module: :users
+  resources :orders, only: [:create]
 
   resource :account, only: [:show] do
     resource :workshop, only: [:show, :new, :create, :edit, :update], module: :accounts do

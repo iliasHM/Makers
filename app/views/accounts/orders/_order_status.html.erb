@@ -1,4 +1,5 @@
-<% if order.state_machine == :asking %>
+
+<% if order.state == :asking %>
   <td class="bg-yellow">
     <strong>Statut de la réservation</strong>
   </td>
@@ -7,16 +8,17 @@
     <strong> Wait for Maker's answer</strong>
   </td>
 
-  <% elsif order.state_machine == :proposed_price %>
+  <% elsif order.state == :proposed_price %>
    <td class="bg-green">
      <strong>Statut de la réservation</strong>
    </td>
 
    <td class="bg-green">
      <strong>A price was submitted by the Maker, do you agree ?</strong>
+     <%= order.price %>
    <td class="bg-green"></td>
 
-<% elsif order.state_machine == :accepted %>
+<% elsif order.state == :accepted %>
   <td class="bg-green">
     <strong>Statut de la réservation</strong>
   </td>
