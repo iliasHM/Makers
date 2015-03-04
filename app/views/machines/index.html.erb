@@ -1,27 +1,81 @@
 <div class="container">
-  <div class="container light-padded">
     <div class="row">
       <h1 class="text-center">Here are the machines</h1>
-    </div>
-  </div>
+      <div class="col-xs-12">
+          <table class="table table-hover">
 
-    <% @machines.each do |machine| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="light-padded">
-        <div class="padded-small">
-          <%= image_tag machine.machine_model.model_picture %>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Machine</th>
+                <th>Available Materials</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <% @machines.each do |machine| %>
+              <tbody>
+                <tr data-toggle="collapse" data-target="#order_<%= machine.id %>" class="accordion-toggle">
+                  <td>
+                    <div>
+                      <%= image_tag machine.category.icon %>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <%= machine.workshop.maker.name %>'s workshop
+                      <br>
+                      <%= machine.machine_model.name %>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <%= machine.materials.map(&:name).join(",") %>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <%= machine.description %>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="12" class="hiddenRow">
+                    <div class="accordion-body collapse" id="order_<%= machine.id %>">
+                      <div id="map" class="form-order" style="width: 500px; height: 500px;"></div>
+                      <div class="form-order">
+                      </div>
+                      <div class="form-order">
+                        <%= simple_form_for(@order, url: orders_path, html: { multipart: true }) do |f| %>
+                          <h3>LET'S ORDER !</h3>
+                          <%= f.association :machine_material, collection: machine.materials.map(&:name), prompt: "Choose a material" %>
+                          <%= f.input :description %>
+                          <%#= f.input :machine_material_id, :label => "Material", :collection => @machine.machine_materials.materials %>
+                          <%= f.hidden_field :machine_id, value: machine.id %>
+
+                          <%= f.button :submit, "Order this machine", class: "btn btn-success" %>
+                        <% end %>
+                      </div>
+
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+      </div>
+
         </div>
+
+
+
+
+
+
         <div class="text-center">
-          <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
-          <p>Category: <%= machine.category.name %></p>
-          <p>Modèle: <%= machine.machine_model.name %></p>
-          <p>Matériel: <%= machine.materials.map(&:name).join(",") %></p>
-          <p>Colors: <%= machine.machine_materials.map(&:colors).join(",") %></p>
-          <p>Maker: <%= machine.workshop.maker.name %></p>
+
         </div>
       </div>
     </div>
-    <% end %>
   </div>
 </div>
 

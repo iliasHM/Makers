@@ -4,6 +4,8 @@ class MachinesController < ApplicationController
   def index
     @machines = Machine.all
     @workshops = Workshop.all
+    @order = Order.new
+
 
     @markers = Gmaps4rails.build_markers(@workshops) do |workshop, marker|
       marker.lat workshop.latitude
@@ -20,7 +22,6 @@ class MachinesController < ApplicationController
 
   def show
     @machine = Machine.find(params[:id])
-    @order = Order.new
     #Material.all(:conditions => "machine_id = '2'")
     #@materials = Material.all.map { |m| [m.name, m.id] }
   end
