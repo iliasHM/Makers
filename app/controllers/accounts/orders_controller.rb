@@ -5,7 +5,6 @@ module Accounts
       @orders = @user.orders
     end
 
-
     private
 
     def order_params
