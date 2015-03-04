@@ -14,7 +14,11 @@
           <% @orders.each do |order| %>
             <div class="light-padded">
               <ul>
-                <li>Desc: <%= order.description %>
+                <li>
+                  Order Id: <%= order.id %>
+                </li>
+                <li>
+                  Desc: <%= order.description %>
                 </li>
                 <li>
                   Maker: <%= order.machine.workshop.maker.name %>

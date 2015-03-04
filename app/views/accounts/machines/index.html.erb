@@ -8,6 +8,7 @@
         <% @machines.each do |machine| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="text-center">
+              <p>Machine Id: <%= machine.id %></p>
               <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
               <p>Category: <%= machine.category.name %> <%= machine.category.icon %></p>
               <p>Model: <%= machine.machine_model.name %></p>
