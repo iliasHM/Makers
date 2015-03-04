@@ -15,7 +15,13 @@
             <div class="user-profile">
             <h4>Orders List</h4>
             <div class="col-md-6">
-
+              <% @user.workshop.machines.each do |machine| %>
+                <% machine.orders.each do |order| %>
+                  <%= order.id %>
+                  <%= order.state %>
+                  <%= order.designer.name %>
+                <% end %>
+              <% end %>
             </div>
             <div class="col-md-6">
 
