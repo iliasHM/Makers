@@ -9,7 +9,7 @@
           <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="text-center">
               <p>Brand: <%= link_to machine.brand.name, machine_path(machine) %></p>
-              <p>Category: <%= machine.category.name %></p>
+              <p>Category: <%= machine.category.name %> <%= machine.category.icon %></p>
               <p>Model: <%= machine.machine_model.name %></p>
               <p>Material: <%= machine.materials.map(&:name).join(",") %></p>
               <p>Colors: <%= machine.machine_materials.map(&:colors).join(",") %></p>

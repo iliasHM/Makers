@@ -1,0 +1,8 @@
+<%= @orders.each do |orders| %>
+<div class="light-padded">
+<%= order.description %>
+<%= order.machine.workshop.maker.name %>
+<%= render 'order_status', order: order %>
+</div>
+
+<% end %>

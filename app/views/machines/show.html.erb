@@ -2,6 +2,24 @@
   <div class="row">
     <div class="col-xs-12">
       <%= @machine.brand.name %>
+      <%= @machine.category %>
+
+
+      <%= simple_form_for(@order, url: orders_path, html: { multipart: true }) do |f| %>
+
+        <%= f.input :description %>
+
+
+      <%#= f.input :machine_material_id, :label => "Material", :collection => @machine.machine_materials.materials %>
+
+
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :machine_id, value: @machine.id %>
+
+
+      <%= f.button :submit, "Order this machine", class: "btn btn-success" %>
+
+      <% end %>
     </div>
   </div>
 </div>

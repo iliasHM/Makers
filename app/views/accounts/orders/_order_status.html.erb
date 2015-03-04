@@ -1,0 +1,37 @@
+
+<% if order.state == :asking %>
+  <td class="bg-yellow">
+    <strong>Statut de la réservation</strong>
+  </td>
+
+  <td class="bg-yellow">
+    <strong> Wait for Maker's answer</strong>
+  </td>
+
+  <% elsif order.state == :proposed_price %>
+   <td class="bg-green">
+     <strong>Statut de la réservation</strong>
+   </td>
+
+   <td class="bg-green">
+     <strong>A price was submitted by the Maker, do you agree ?</strong>
+     <%= order.price %>
+   <td class="bg-green"></td>
+
+<% elsif order.state == :accepted %>
+  <td class="bg-green">
+    <strong>Statut de la réservation</strong>
+  </td>
+
+  <td class="bg-green">
+    <strong>Acceptée</strong>
+  <td class="bg-green"></td>
+
+<% else %>
+  <td class="bg-red">
+    <strong>Statut de la réservation</strong>
+  </td>
+  <td class="bg-red">
+    <strong> Refusée</strong>
+  </td>
+<% end %>
