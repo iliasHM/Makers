@@ -27,10 +27,11 @@
                   </div>
                   <div class="col-xs-4">
                     <% if order.state == "asking" %>
-                       <p><h5> Status: </h5> </br>
-                        Your order request is being reviewed by <em><%= order.machine.workshop.maker.name %></em></p>
-                      <% elsif order.state == "proposed_price" %>
-                       <p>Price proposes <%= order.price %></p>
+                      <p><h5> Status: </h5> </br>
+                      Your order request is being reviewed by <em><%= order.machine.workshop.maker.name %></em></p>
+                    <% elsif order.state == "proposed_price" %>
+                      <p><h5> Status: </h5> </br>
+                      <em><%= order.machine.workshop.maker.name %> askes for <h6><%= order.price %>€</h6>
                        <%= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary" %>
                       <% else %>
                        <%= link_to "Complete order", account_order_path(order), method: :put, class: "btn btn-primary" %>
