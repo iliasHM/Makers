@@ -52,6 +52,7 @@ $navbar-profile-border-width: 2px;
   border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
   height: 72px;
   transition: background 0.4s ease;
+  margin-bottom: 0px;
 
 
   .navbar-nav > li > a,
@@ -131,7 +132,7 @@ $navbar-profile-border-width: 2px;
 
   .navbar-nav > li > .dropdown-menu{
     border-radius: 0;
-    margin-top: -22px;
+    // margin-top: -22px;
     right: -40px;
   }
 
