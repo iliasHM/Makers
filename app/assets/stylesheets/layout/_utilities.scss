@@ -11,13 +11,16 @@
 
 .img-avatar2{
     margin-right: 10px;
-    height: 90px;
-    width: 90px;
+    height: 55px;
+    width: 55px;
     border-radius: 50%;
     display: inline-block;
     background-size: cover;
     background-position: center center;
   }
+.vertical-top {
+  vertical-align: top;
+}
 
 .padded {
   padding-top: 8em;
