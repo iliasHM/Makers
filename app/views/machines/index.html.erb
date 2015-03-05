@@ -52,7 +52,7 @@
                       <div class="form-order">
                         <%= simple_form_for(@order, url: orders_path, html: { multipart: true }) do |f| %>
                           <h3>LET'S ORDER !</h3>
-                          <%= f.association :machine_material, collection: machine.materials, label_method: :name, value_method: :id, prompt: "Choose a material" %>
+                          <%#= f.association :machine_material, collection: machine.materials, label_method: :name, value_method: machine.machine_materials(:id), prompt: "Choose a material" %>
                           <%= f.input :description %>
                           <%#= f.input :machine_material_id, :label => "Material", :collection => @machine.machine_materials.materials %>
                           <%= f.hidden_field :machine_id, value: machine.id %>
