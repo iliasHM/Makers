@@ -13,10 +13,15 @@
 }
 
 .order-info {
-  display: inline-block;
-
+  // display: inline-block;
+  padding-left: 30px;
 }
 
 .machine-info {
-  display: inline-block;
+  // display: inline-block;
+  padding-left: 20px;
+}
+
+.outer > div > h3 {
+  margin-left: 128px;
 }
