@@ -10,7 +10,7 @@
       </button>
       <a class="navbar-brand" href="/">
         <h1 class="logo"><%= image_tag "apron-black.svg", class: "logo" %>
-        Fabily</h1>
+        <%= image_tag "fabily-logo.svg", class: "logo" %></h1>
       </a>
     </div>
 
@@ -46,10 +46,10 @@
         </li>
         <li>
           <% if user_signed_in? && current_user.workshop != nil %>
-            <%= link_to t(".top_call_to_action", default: "Add a machine"), new_account_workshop_machine_path(current_user.workshop), class: "btn" %>
+            <%= link_to t(".top_call_to_action", default: "Add a machine"), new_account_workshop_machine_path(current_user.workshop), class: "btn btn-add" %>
 
           <% else %>
-            <%= link_to t(".top_call_to_action", default: "Add a machine"), new_account_workshop_path, class: "btn" %>
+            <%= link_to t(".top_call_to_action", default: "Add a machine"), new_account_workshop_path, class: "btn btn-add" %>
           <% end %>
         </li>
       </ul>

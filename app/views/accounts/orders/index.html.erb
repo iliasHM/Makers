@@ -1,70 +1,78 @@
-<div class="container-fluid">
-  <div class="mini-height">
 
-    <div class="col-md-3">
+
+    <div class="col-md-3 full-height">
       <%= render 'shared/profilesidebar' %>
     </div>
 
-    <div class="col-md-9">
-      <div class="outer">
-        <div class="inner">
-          <h3><em>Orders List</em></h3>
+    <div class="col-md-9 full-height">
+      <div class="content">
+        <div class="outer">
+          <div class="inner">
+            <h3><em>Orders List</em></h3>
+          </div>
         </div>
-      </div>
 
-      <% @orders.each do |order| %>
+          <% @orders.each do |order| %>
 
-        <div class="row">
-          <div class="col-xs-1"></div>
-          <div class="col-xs-10">
-            <div class="order-list-card">
+            <div class="row">
+              <div class="col-xs-1"></div>
               <div class="col-xs-10">
-                <div class= "order-info">
-                  <h4>Order #<%= order.id %> -- <%= order.machine.machine_model.name %></h4>
-                  <h4><%= link_to "#{order.machine.workshop.maker.name}" %></h4>
-                  <% if order.state == "asking" %>
-                   <p>Status: <%= order.state %></p>
-                  <% elsif order.state == "proposed_price" %>
-                   <p>Price proposes <%= order.price %></p>
-                   <%= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary" %>
-                  <% else %>
-                   <%= link_to "Complete order", account_order_path(order), method: :put, class: "btn btn-primary" %>
-                  <% end %>
+                <div class="order-list-card">
+                  <div class="col-xs-6">
+                    <div class= "order-info">
+                      <h4>Order #<%= order.id %> -- <%= order.machine.machine_model.name %></h4>
+                      <h4><%= link_to "#{order.machine.workshop.maker.name}" %></h4>
+                      <h5>You asked :</h5> <%= order.description %>
+                    </div>
+                  </div>
+                  <div class="col-xs-4">
+                    <% if order.state == "asking" %>
+                      <p><h5> Status: </h5> </br>
+                      Your order request is being reviewed by <em><%= order.machine.workshop.maker.name %></em></p>
+                    <% elsif order.state == "proposed_price" %>
+                      <p><h5> Status: </h5> </br>
+                      <em><%= order.machine.workshop.maker.name %> askes for <h6><%= order.price %>€</h6>
+                       <%= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary" %>
+                      <% else %>
+                       <%= link_to "Complete order", account_order_path(order), method: :put, class: "btn btn-primary" %>
+                      <% end %>
+                  </div>
+                  <div class="col-xs-2">
+                    <div class="order-icon">
+                      <%= image_tag order.machine.category.icon, height: '90px' %>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-xs-2">
-                <%= image_tag order.machine.category.icon, height: '50px' %>
-              </div>
+              <div class="col-xs-1"></div>
+
+
+
+                  <!-- <ul class="list-unstyled">
+                    <li>
+                      <h4>Order #<%= order.id %>  <%= order.machine.machine_model.name %></h4>
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>Your message : <%= order.description %></li>
+                    <li>
+                      <%# if order.state == "asking" %>
+                       <p>Status: <%= order.state %></p>
+                       <%# elsif order.state == "proposed_price" %>
+                       <p>Price proposes <%= order.price %></p>
+                       <%#= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary" %>
+                       <%# else %>
+                       <%#= link_to "Complete order", account_order_path(order), method: :put, class: "btn btn-primary" %>
+                       <%# end %>
+                    </li>
+                  </ul>
+                </div>
+                <div class="machine-info pull-right">
+
+                </div> -->
             </div>
-          <div class="col-xs-1"></div>
-
-
-
-              <!-- <ul class="list-unstyled">
-                <li>
-                  <h4>Order #<%= order.id %>  <%= order.machine.machine_model.name %></h4>
-                </li>
-                <li>
-
-                </li>
-                <li>Your message : <%= order.description %></li>
-                <li>
-                  <%# if order.state == "asking" %>
-                   <p>Status: <%= order.state %></p>
-                   <%# elsif order.state == "proposed_price" %>
-                   <p>Price proposes <%= order.price %></p>
-                   <%#= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary" %>
-                   <%# else %>
-                   <%#= link_to "Complete order", account_order_path(order), method: :put, class: "btn btn-primary" %>
-                   <%# end %>
-                </li>
-              </ul>
-            </div>
-            <div class="machine-info pull-right">
-
-            </div> -->
-        </div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+

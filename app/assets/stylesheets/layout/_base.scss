@@ -10,9 +10,14 @@
   color: $gray;
  }
 
+ html {
+  height: 100%;
+ }
+
  body {
   background: white;
-  min-height: 800px;
+  // min-height: 800px;
+  height: 100%;
  }
 
  .help-block {

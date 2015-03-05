@@ -3,13 +3,85 @@
   background-size: cover;
   background-position: 0px -250px;
   height: 600px;
-  margin-top: -22px;
+  // margin-top: -22px;
   padding-top: 50px;
   color: white;
+  position: relative;
+
+  .text-center {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  &:after {
+    background: rgba(160, 112, 49, 0.6);
+    content: " ";
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  #catch {
+    font-size: 80px;
+  }
+
   h1 {
     font-size: 150px;
   }
   p {
     font-size: 30px;
+    text-shadow: 0px 2px 2px rgb(112, 75, 25);
+  }
+  img {
+    border-radius: 13px;
+    background: rgba(138, 95, 38, 0);
+    padding: 17px;
+  }
+
+}
+
+#search {
+  position: absolute;
+  bottom: 0;
+  background: rgba(49, 45, 39, 0.53);
+  width: 100%;
+  text-align: center;
+  padding: 17px;
+
+  .search-label {
+    color: white;
+  }
+
+  .search-input {
+    padding: 11px;
+    border-radius: 4px;
+    border: none;
+  }
+  .btn-warning {
+    color: #fff;
+    background-color: #A07031;
+    border-color: #8c622b;
+    margin: 0px 10px;
   }
 }
+
+
+
+
+// exemple media query
+
+// @media (max-width: 400px) {
+//   .div {
+//     background: red;
+//     overflow: hidden;
+//   }
+//   @media (min-width: 400px) {
+//     .div {
+//       background: red;
+//       overflow: hidden;
+//     }
+//   }
+
