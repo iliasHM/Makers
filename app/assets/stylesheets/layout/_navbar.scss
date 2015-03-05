@@ -24,10 +24,10 @@ $navbar-border-bottom-color: $gray-lighter;
  * Navbar button
  * ------------------------------------- */
 $navbar-btn-height: 40px;
-$navbar-btn-bg: $orange;
+$navbar-btn-bg: $brown;
 $navbar-btn-color: white;
 $navbar-btn-horizontal-padding: 10px;
-$navbar-btn-radius: 2px;
+$navbar-btn-radius: 7px;
 
 /* -------------------------------------
  * Navbar profile picture
@@ -50,8 +50,9 @@ $navbar-profile-border-width: 2px;
   padding-left: $navbar-horizontal-padding;
   padding-right: $navbar-horizontal-padding;
   border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
-  height: 80px;
+  height: 72px;
   transition: background 0.4s ease;
+
 
   .navbar-nav > li > a,
   .navbar-nav > .open > a,
@@ -90,6 +91,15 @@ $navbar-profile-border-width: 2px;
     font-size: 12px;
     &:hover{
       background-color: darken($navbar-btn-bg, 30%);
+    }
+  }
+
+  .navbar-nav > li > a.btn-add {
+    background: transparent;
+    border: 2px solid $brown;
+    color: $brown;
+    &:hover{
+      background-color: transparent;
     }
   }
 
