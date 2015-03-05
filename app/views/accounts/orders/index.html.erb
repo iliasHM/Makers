@@ -19,6 +19,10 @@
               <div class="col-xs-10">
                 <div class="order-list-card">
                   <div class="col-xs-6">
+                    <% if order.id == nil %>
+                      <h3>Oops, you don't have any order yet</h3>
+                      <%= link_to t(".top_call_to_action", default: "Find machines"), machines_path, class: "btn" %>
+                    <% else %>
                     <div class= "order-info">
                       <h4>Order #<%= order.id %> -- <%= order.machine.machine_model.name %></h4>
                       <h4><%= link_to "#{order.machine.workshop.maker.name}" %></h4>
