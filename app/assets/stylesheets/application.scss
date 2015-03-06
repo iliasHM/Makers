@@ -17,12 +17,13 @@
 
 @font-face {
     font-family: 'dk_lemon_yellow_sunregular';
-    src: url('dk.eot');
-    src: url('dk.eot?#iefix') format('embedded-opentype'),
-         url('dk.woff2') format('woff2'),
-         url('dk.woff') format('woff'),
-         url('dk.ttf') format('truetype'),
-         url('dk.svg#dk_lemon_yellow_sunregular') format('svg');
+    src: font-url('dk.eot');
+    src: font-url('dk.eot?#iefix') format('embedded-opentype'),
+         font-url('dk.woff2') format('woff2'),
+         font-url('dk.woff') format('woff'),
+         font-url('dk.otf') format('otf'),
+         font-url('dk.ttf') format('truetype'),
+         font-url('dk.svg#dk_lemon_yellow_sunregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
