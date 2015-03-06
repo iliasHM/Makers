@@ -1,22 +1,102 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+  <div class="mini-height">
     <% if @workshops.size == 0 %>
-      <p>Sorry, no machines yet in that city!</p>
-    <% else %>
-      <% @workshops.each do |workshop| %>
-        <% if workshop.machines.count > 0 %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="text-center">
-            <p><%= workshop.maker.name %></p>
-            <p><%= workshop.machines.map(&:name).join("") %></p>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="text-center padded">
+            <%= image_tag "apron-black.svg" %>
+            <h1>Sorry, no machines yet in that city!</h1>
           </div>
         </div>
-        <% end %>
+      </div>
+    <% else %>
+      <% @workshops.each do |workshop| %>
+        <div class="border-bottom">
+          <div class="row">
+            <% if workshop.machines.count > 0 %>
+              <div class="col-xs-7">
+                <div class="light-padded padded-left padded-right ">
+                  <div class="col-xs-12">
+                    <ul class="list-inline bg-gray">
+                      <li class="vertical-top ">
+                        <%#= image_tag workshop.maker.picture, class: "img-avatar2" %>
+                      </li>
+                      <li>
+                        <h3 style="letter-spacing:1.5px;"><em><%= workshop.maker.name.upcase %>'S WORKSHOP</em></h3>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="border-bottom">
+                    <% workshop.machines.each do |machine| %>
+                      <div class="col-xs-2">
+                        <div class="text-center padded-small vertical-top">
+                          <%= image_tag machine.category.icon, class: "img-avatar2" %>
+                        </div>
+                      </div>
+                      <div class="col-xs-8">
+                        <ul class="list-inline">
+                          <li>
+                            <h5 style="color:#A07031">Machine: <em><%= machine.name %></em></h5>
+                          </li>
+                          <li>
+                            <p><%= machine.description %></p>
+                          </li>
+                          <li>
+                            <p>Material: <em><%= machine.materials.map(&:name).join(",") %></em></p>
+
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-xs-2">
+                        <div class="text-center padded-small">
+                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#order_<%= machine.id %>" aria-expanded="false" aria-controls="collapseExample" id="machine_row_<%= machine.id %>">
+                            Click
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-xs-12">
+                        <div class="collapse" id="order_<%= machine.id %>">
+                          <%= simple_form_for(@order, url: orders_path, html: { multipart: true }) do |f| %>
+                            <h3>LET'S ORDER !</h3>
+                            <%= f.association :machine_material, collection: machine.materials, label_method: :name, value_method: :id, prompt: "Choose a material" %>
+                            <%= f.input :description %>
+                            <%= f.hidden_field :machine_id, value: machine.id %>
+                            <%= f.button :submit, "Start your project", class: "btn btn-success margin-neg" %>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-5">
+                <div id="map" class="form-order" style="width: 100%; height: 800px;"></div>
+              </div>
+
+
+
+
+            <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div id="map" style="width: 100%; height: 600px;">
-      </div>
-    </div>
   </div>
 </div>
+
+                    <%= content_for(:after_js) do %>
+                      <%= javascript_tag do %>
+                        $(document).ready(function() {
+                          $('.collapse').on('show.bs.collapse', function () {
+                              $('.collapse.in').collapse('hide');
+                          });
+                        handler = Gmaps.build('Google');
+                        handler.buildMap({ internal: { id: 'map' } }, function(){
+                          markers = handler.addMarkers(<%= raw @markers.to_json %>);
+                          handler.bounds.extendWith(markers);
+                          handler.fitMapToBounds();
+                        });
+                        });
+                      <% end %>
+                    <% end %>
+
