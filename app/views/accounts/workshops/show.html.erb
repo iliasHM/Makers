@@ -11,34 +11,41 @@
         </div>
       </div>
 
-
+        <div class="line"></div>
           <% @user.workshop.machines.each do |machine| %>
           <% machine.orders.each do |order| %>
-            <div class="col-xs-1"></div>
+
             <div class="col-xs-5">
             <div class="job-list-card">
-              <ul>
-                <li>Order Id : <%= order.id %></li>
-                <li><%= order.designer.name %> would like to make an order</li>
+              <ul class="list-unstyled">
+                <li><h4><%= machine.machine_model.name %></h4></li>
+                <li><h5>Order #<%= order.id %></h5></li>
+                <li><h5>From <em><%= order.designer.name %></em></h5></li>
                 <li>Message : <%= order.description %></li>
-                <li>State : <%= order.state %></li>
-                <li>Proposed price : <%= order.price || 'n/a' %></li>
+
+                  <% if order.state == 'asking' %>
+                  <h4>Status : waiting for your offer</h4>
+                    <%= simple_form_for((@order && @order == order ? @order : order), url: account_received_order_path(order)) do |f| %>
+                      <p>Make an offer : <%= f.input :price, label: "Price" %></p>
+                      <%= f.button :submit, "Reply with an offer", class: "btn btn-success" %>
+                    <% end %>
+                  <% elsif order.state == "proposed_price" %>
+                    <h4>Status : </h4> <h5>Waiting for <em><%= order.designer.name %></em> 's answer</h5>
+                    <p>You offered the job for <%= order.price || 'n/a' %>€</p>
+                  <% elsif order.state == 'accepted' %>
+                    <h4>Status : </h4>  <h5>Accepted by  <em><%= order.designer.name %></em></h5>
+                    <p><%= order.designer.name %> accepted your offer for <%= order.price || 'n/a' %>€</p>
+                  <% end %>
               </ul>
 
-                <% if order.state == 'asking' %>
-                  <%= simple_form_for((@order && @order == order ? @order : order), url: account_received_order_path(order)) do |f| %>
-                    <p>Make an offer : <%= f.input :price, label: "Price" %></p>
-                    <%= f.button :submit, "Reply with an offer", class: "btn btn-success" %>
-                    <p>Designer accept price, start the order</p>
-                  <% end %>
-                <% elsif order.state == 'accepted' %>
-                <% end %>
+
 
             </div>
             </div>
-            <div class="col-md-6"></div>
+
           <% end %>
           <% end %>
+        </div>
 
     </div>
   </div>

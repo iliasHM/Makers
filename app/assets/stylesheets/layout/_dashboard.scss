@@ -38,4 +38,14 @@
   height: 100%;
 }
 
+.line {
+  border-bottom: 1px solid $gray-light;
+  margin-left: 50px;
+  position: relative;
+  height: 3px;
+  margin: 85px 10%;
+  // margin-top: -22px;
+  width: 80%;
+}
+
 /** Style for demonstration purpose only **/
