@@ -14,3 +14,13 @@
 @import "vendor/index";
 @import "orders";
 @import "workshops";
+
+@font-face {
+  font-family: 'DKyellow';
+  src:font-url('dk.otf');
+  src:font-url('dk.svg#dk') format('svg'),
+    font-url('dk.woff') format('woff'),
+    font-url('dk.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
