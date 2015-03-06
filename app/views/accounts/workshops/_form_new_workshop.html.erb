@@ -3,10 +3,10 @@
   <%= label_tag(:q, "Add the address") %>
   <%= text_field_tag :address, params[:address], id: 'user_input_autocomplete_address' %>
 
-  <input id="street_number" name="street_number"  disabled>
-  <input id="route" name="route"  disabled>
-  <input id="locality" name="locality" disabled>
-  <input id="country" name="country"  disabled>
+  <input type="hidden" id="street_number" name="street_number"  disabled>
+  <input type="hidden" id="route" name="route"  disabled>
+  <input type="hidden" id="locality" name="locality" disabled>
+  <input type="hidden" id="country" name="country"  disabled>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.button :submit %>
 <% end %>
