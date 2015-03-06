@@ -10,45 +10,54 @@
           <h3><em>My Workshop</em></h3>
         </div>
       </div>
-        <div class="text-center"><h3>My jobs list</h3></div>
-        <div class="line"></div>
-          <% @user.workshop.machines.each do |machine| %>
-          <% machine.orders.each do |order| %>
-
-            <div class="col-xs-5">
-            <div class="job-list-card">
-              <ul class="list-unstyled">
-                <li><h4><%= machine.machine_model.name %></h4></li>
-                <li><h5>Order #<%= order.id %></h5></li>
-                <li><h5>From <em><%= order.designer.name %></em></h5></li>
-                <li>Message : <%= order.description %></li>
-
-                  <% if order.state == 'asking' %>
-                  <h4>Status : waiting for your offer</h4>
-                    <%= simple_form_for((@order && @order == order ? @order : order), url: account_received_order_path(order)) do |f| %>
-                      <p>Make an offer : <%= f.input :price, label: "Price" %></p>
-                      <%= f.button :submit, "Reply with an offer", class: "btn btn-success" %>
-                    <% end %>
-                  <% elsif order.state == "proposed_price" %>
-                    <h4>Status : </h4> <h5>Waiting for <em><%= order.designer.name %></em> 's answer</h5>
-                    <p>You offered the job for <%= order.price || 'n/a' %>€</p>
-                  <% elsif order.state == 'accepted' %>
-                    <h4>Status : </h4>  <h5>Accepted by  <em><%= order.designer.name %></em></h5>
-                    <p><%= order.designer.name %> accepted your offer for <%= order.price || 'n/a' %>€</p>
-                  <% end %>
-              </ul>
-
-
-
-            </div>
-            </div>
-
-          <% end %>
-          <% end %>
+      <div class="col-xs-12">
+        <div class="text-center">
+          <h3>My jobs list</h3>
         </div>
+      </div>
 
+      <div class="col-xs-12">
+        <!-- <div class="line"> -->
+        <!-- </div> -->
+        <% @user.workshop.machines.each do |machine| %>
+          <% machine.orders.each do |order| %>
+            <div class="col-xs-6">
+              <div class="job-list-card">
+                <ul class="list-unstyled">
+                  <li><h4>Order #<%= order.id %></h4></li>
+                  <li><h5 style="color:#A07031">On <%= machine.machine_model.name %> / From <em><%= order.designer.name %></h5></li>
+                  <li><h5></em></h5></li>
+                  <li>Message : <%= order.description %></li>
+                  <div class="margin-left">
+                    <button class="btn" type="button" data-toggle="collapse" data-target="#order_<%= order.id %>" aria-expanded="false" aria-controls="collapseExample" id="machine_row_<%= machine.id %>">
+                    >> View status
+                    </button>
+                  </div>
+                  <div class="collapse"  id="order_<%= order.id %>">
+                    <% if order.state == 'asking' %>
+                    <h4>Status : Waiting for your offer</h4>
+                      <%= simple_form_for((@order && @order == order ? @order : order), url: account_received_order_path(order)) do |f| %>
+                        <p>Make an offer :</p>
+                        <%= f.input :price, label: "Price" %>
+                        <%= f.button :submit, "Reply with an offer", class: "btn btn-success text-center" %>
+                      <% end %>
+                    <% elsif order.state == "proposed_price" %>
+                      <h4>Status : </h4> <h5>Waiting for <em><%= order.designer.name %></em> 's answer</h5>
+                      <p>You offered the job for <%= order.price || 'n/a' %>€</p>
+                    <% elsif order.state == 'accepted' %>
+                      <h4>Status : </h4>  <h5>Accepted by  <em><%= order.designer.name %></em></h5>
+                      <p><%= order.designer.name %> accepted your offer for <%= order.price || 'n/a' %>€</p>
+                    <% end %>
+                  </div>
+                </ul>
+                  </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
 
 
 
