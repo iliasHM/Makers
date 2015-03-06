@@ -50,7 +50,7 @@
                         Your order request is being reviewed by <em><%= order.machine.workshop.maker.name %></em></p>
                       <% elsif order.state == "proposed_price" %>
                         <p><h5> Status: </h5>
-                        <em><%= order.machine.workshop.maker.name %> askes for <h6><%= order.price %>€</h6> </p></br>
+                        <em><%= order.machine.workshop.maker.name %> asks for <h6><%= order.price %>€</h6> </p></br>
                         <%= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary pull-right" %>
                       <% else %>
                         <p><h5> Status: </h5>
