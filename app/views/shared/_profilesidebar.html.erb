@@ -3,6 +3,6 @@
   <h2><%= link_to_unless_current "My Orders", account_orders_path %></h2>
   <% if @user.workshop %>
     <h2><%= link_to_unless_current "My Workshop", account_workshop_path %></h2>
-    <h2><%= link_to_unless_current "My Machines", account_machines_path %></h2>
+    <!-- <h2><%#= link_to_unless_current "My Machines", account_machines_path %></h2> -->
   <% end %>
 </div>
