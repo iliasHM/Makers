@@ -17,6 +17,7 @@
   height: 70px;
   // margin-top: -22px;
   width: 100%;
+  background-color: rgba(160,112,49,0.2);
 }
 
 .inner {
@@ -35,6 +36,16 @@
 
 .full-height {
   height: 100%;
+}
+
+.line {
+  border-bottom: 1px solid $gray-light;
+  margin-left: 50px;
+  position: relative;
+  height: 3px;
+  margin: 8px 10%;
+  // margin-top: -22px;
+  width: 80%;
 }
 
 /** Style for demonstration purpose only **/

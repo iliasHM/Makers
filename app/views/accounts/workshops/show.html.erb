@@ -1,51 +1,96 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="mini-height">
-      <div class="col-md-3">
-        <%= render 'shared/profilesidebar' %>
-      </div>
-      <div class="col-md-9">
-        <div class="outer">
-          <div class="inner">
-            <h3><em>My Workshop</em></h3>
-          </div>
+
+  <div class="col-md-3 full-height">
+    <%= render 'shared/profilesidebar' %>
+  </div>
+
+  <div class="col-md-9 full-height">
+    <div class="content">
+      <div class="outer">
+        <div class="inner">
+          <h3><em>My Workshop</em></h3>
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="user-profile">
-            <h4>Orders List</h4>
-            <div class="col-md-6">
-              <% @user.workshop.machines.each do |machine| %>
-                <% machine.orders.each do |order| %>
-                  <p>Order Id : <%= order.id %></p>
-                  <p><%= order.designer.name %> would like to make an order</p>
-                  <p>Message : <%= order.description %></p>
-                  <p>State : <%= order.state %></p>
-                  <p>Proposed price : <%= order.price || 'n/a' %></p>
+      </div>
+        <div class="text-center"><h3>My jobs list</h3></div>
+        <div class="line"></div>
+          <% @user.workshop.machines.each do |machine| %>
+          <% machine.orders.each do |order| %>
+
+            <div class="col-xs-5">
+            <div class="job-list-card">
+              <ul class="list-unstyled">
+                <li><h4><%= machine.machine_model.name %></h4></li>
+                <li><h5>Order #<%= order.id %></h5></li>
+                <li><h5>From <em><%= order.designer.name %></em></h5></li>
+                <li>Message : <%= order.description %></li>
 
                   <% if order.state == 'asking' %>
+                  <h4>Status : waiting for your offer</h4>
                     <%= simple_form_for((@order && @order == order ? @order : order), url: account_received_order_path(order)) do |f| %>
                       <p>Make an offer : <%= f.input :price, label: "Price" %></p>
                       <%= f.button :submit, "Reply with an offer", class: "btn btn-success" %>
-                      <p>Designer accept price, start the order</p>
-
                     <% end %>
-                                        <% elsif order.state == 'accepted' %>
-
+                  <% elsif order.state == "proposed_price" %>
+                    <h4>Status : </h4> <h5>Waiting for <em><%= order.designer.name %></em> 's answer</h5>
+                    <p>You offered the job for <%= order.price || 'n/a' %>€</p>
+                  <% elsif order.state == 'accepted' %>
+                    <h4>Status : </h4>  <h5>Accepted by  <em><%= order.designer.name %></em></h5>
+                    <p><%= order.designer.name %> accepted your offer for <%= order.price || 'n/a' %>€</p>
                   <% end %>
-                <% end %>
-              <% end %>
+              </ul>
 
 
-            </div>
-            <div class="col-md-6">
 
             </div>
             </div>
 
+          <% end %>
+          <% end %>
+        </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+<!--
+  <div class="col-md-9 full-height">
+    <div class="content">
+      <div class="outer">
+        <div class="inner">
+          <h3><em>My Workshop</em></h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="user-profile">
+            <h4>Orders List</h4>
+          <div class="col-md-6">
+            <%# @user.workshop.machines.each do |machine| %>
+              <%# machine.orders.each do |order| %>
+                <p>Order Id : <%#= order.id %></p>
+                <p><%#= order.designer.name %> would like to make an order</p>
+                <p>Message : <%#= order.description %></p>
+                <p>State : <%#= order.state %></p>
+                <p>Proposed price : <%#= order.price || 'n/a' %></p>
+
+                <%# if order.state == 'asking' %>
+                  <%#= simple_form_for((@order && @order == order ? @order : order), url: account_received_order_path(order)) do |f| %>
+                    <p>Make an offer : <%#= f.input :price, label: "Price" %></p>
+                    <%#= f.button :submit, "Reply with an offer", class: "btn btn-success" %>
+                    <p>Designer accept price, start the order</p>
+                  <%# end %>
+                <%# elsif order.state == 'accepted' %>
+                <%# end %>
+              <%# end %>
+            <%# end %>
+          </div>
+          <div class="col-md-6"></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> -->

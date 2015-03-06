@@ -7,7 +7,7 @@
       <div class="content">
         <div class="outer">
           <div class="inner">
-            <h3><em>Orders List</em></h3>
+            <h3><em>You ordered the following items</em></h3>
           </div>
         </div>
 
@@ -49,11 +49,13 @@
                         <p><h5> Status: </h5> </br>
                         Your order request is being reviewed by <em><%= order.machine.workshop.maker.name %></em></p>
                       <% elsif order.state == "proposed_price" %>
-                        <p><h5> Status: </h5> </br>
-                        <em><%= order.machine.workshop.maker.name %> askes for <h6><%= order.price %>€</h6>
-                        <%= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary" %>
+                        <p><h5> Status: </h5>
+                        <em><%= order.machine.workshop.maker.name %> askes for <h6><%= order.price %>€</h6> </p></br>
+                        <%= link_to "Accept proposition", account_order_path(order), method: :put, class: "btn btn-primary pull-right" %>
                       <% else %>
-                        <%= link_to "Complete order", account_order_path(order), method: :put, class: "btn btn-primary" %>
+                        <p><h5> Status: </h5>
+                        You are making <em><%= order.designer.name %></em> 's project.</p> </br>
+                        <%= link_to "Complete order", account_order_path(order), method: :put, class: "btn btn-primary pull-right" %>
                       <% end %>
                     </div>
                     <div class="col-xs-2">
