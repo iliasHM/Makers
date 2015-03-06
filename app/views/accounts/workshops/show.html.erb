@@ -27,7 +27,9 @@
                   <li><h4>Order #<%= order.id %></h4></li>
                   <li><h5 style="color:#A07031">On <%= machine.machine_model.name %> / From <em><%= order.designer.name %></h5></li>
                   <li><h5></em></h5></li>
-                  <li>Message : <%= order.description %></li>
+                  <li>Message: <%= order.description %></li>
+                  <li>Material asked: <%= order.machine.materials.map(&:name).join("") %></li>
+
                   <div class="margin-left">
                     <button class="btn" type="button" data-toggle="collapse" data-target="#order_<%= order.id %>" aria-expanded="false" aria-controls="collapseExample" id="machine_row_<%= machine.id %>">
                     >> View status
