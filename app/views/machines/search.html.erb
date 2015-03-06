@@ -55,7 +55,7 @@
                         </div>
                       </div>
                       <div class="col-xs-12">
-                        <div class="collapse" id="order_<%= machine.id %>">
+                        <div class="collapse padded-small" id="order_<%= machine.id %>">
                           <%= simple_form_for(@order, url: orders_path, html: { multipart: true }) do |f| %>
                             <h3>LET'S ORDER !</h3>
                             <%= f.association :machine_material, collection: machine.materials, label_method: :name, value_method: :id, prompt: "Choose a material" %>
