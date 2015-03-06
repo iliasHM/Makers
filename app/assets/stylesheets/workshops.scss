@@ -1,3 +1,12 @@
 // Place all the styles related to the workshops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.job-list-card {
+  padding: 1em;
+  width: 100%;
+  border-radius: 2px;
+  margin: 50px 5%;
+  background-color: $porcelain;
+  display: flex;
+}
