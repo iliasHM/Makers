@@ -2,7 +2,7 @@
   background: image-url('laser_dark.jpg');
   background-size: cover;
   background-position: 0px -200px;
-  height: 640px;
+  height: 700px;
   // margin-top: -22px;
   padding-top: 50px;
   color: white;
@@ -44,14 +44,20 @@
 }
 
 #search {
-  position: absolute;
+  position: relative;
   bottom: 0;
-  background: rgba(49, 45, 39, 0.53);
+  background: white;
   width: 100%;
   text-align: center;
   padding: 17px;
 
   .search-label {
+    color: white;
+  }
+
+  button {
+    border-radius: 5px;
+    background-color: #A07031;
     color: white;
   }
 
