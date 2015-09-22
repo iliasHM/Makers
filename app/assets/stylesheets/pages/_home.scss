@@ -1,12 +1,12 @@
 #banner {
   background: image-url('laser_dark.jpg');
   background-size: cover;
-  background-position: 0px -100px;
-  height: 700px;
+  // background-position: 0px -100px;
+  height: 100%;
   // margin-top: -22px;
-  padding-top: 50px;
+  // padding-top: 50px;
   color: white;
-  position: relative;
+  // position: relative;
 
   .text-center {
     text-align: center;
@@ -15,7 +15,7 @@
   }
 
   &:after {
-    background: rgba(160, 112, 49, 0.6);
+    background: rgba(160, 112, 49, 0.4);
     content: " ";
     position: absolute;
     left:0;
@@ -56,6 +56,18 @@
       color: white;
     }
   }
+
+}
+
+#typeform {
+    width: 85%;
+    height: 650px;
+    padding-left: 15%;
+    padding-bottom: 15%;
+
+}
+
+#signature {
 
 }
 
